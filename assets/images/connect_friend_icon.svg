@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>connect_friend_icon</title>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="14_Call-Meeting" transform="translate(-37.000000, -105.000000)" stroke="#9AA2B6" stroke-width="1.2">
+            <g id="Group-9" transform="translate(0.000000, 88.000000)">
+                <g id="connect_friend_icon" transform="translate(37.000000, 17.000000)">
+                    <circle id="Oval" cx="7.5" cy="5.13157895" r="4.53157895"></circle>
+                    <rect id="Rectangle" x="0.6" y="11.6526316" width="18.8" height="6.69473684" rx="3.15789474"></rect>
+                    <path d="M17.0770597,15.0247407 L11.660393,15.0247407 M12.8336313,13.4348358 L11.2437263,15.0247407 L12.871228,16.6522424" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <circle id="Oval" cx="15.3947368" cy="7.5" r="2.16315789"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

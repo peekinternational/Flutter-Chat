@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>channelsIcon</title>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="14_Call-Meeting" transform="translate(-325.000000, -736.000000)" stroke="#C1C8D9" stroke-width="1.5">
+            <g id="Footer-Tabs" transform="translate(0.000000, 729.000000)">
+                <g id="1" transform="translate(300.500000, 0.000000)">
+                    <g id="channelsIcon" transform="translate(25.500000, 7.941176)">
+                        <circle id="Oval" cx="5.23529412" cy="19" r="5"></circle>
+                        <circle id="Oval" cx="19.7941176" cy="3.5" r="3.5"></circle>
+                        <path d="M17.1695611,1.37109529 C15.5511753,0.53254229 13.7132621,0.0588235294 11.7647059,0.0588235294 C5.26723824,0.0588235294 0,5.32606177 0,11.8235294 C0,13.4038938 0.311608429,14.9114782 0.876735599,16.2881928 M8.25236699,23.0549923 C9.36156902,23.4015054 10.5413309,23.5882353 11.7647059,23.5882353 C18.2621735,23.5882353 23.5294118,18.3209971 23.5294118,11.8235294 C23.5294118,9.87409361 23.0552652,8.03540066 22.2160042,6.41648262" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

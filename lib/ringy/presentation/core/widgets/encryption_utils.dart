@@ -1,5 +1,6 @@
 import 'package:encrypt/encrypt.dart';
-import 'package:flutter_chat/ringy/resources/constants.dart';
+
+import '../../../../app_config.dart';
 
 class EncryptData{
 //for AES Algorithms
@@ -10,7 +11,7 @@ class EncryptData{
 
   static String encryptAES(String mMessage, String? aesKey){
 
-    if (Constants.isEncrypted) {
+    if (AppConfig.isEncrypted) {
       try {
             final iv1 = aesKey?.substring(0, 16);
 
@@ -30,7 +31,7 @@ class EncryptData{
 
 
   static String decryptAES(String encryptedMessage, String? s) {
-    if (Constants.isEncrypted) {
+    if (AppConfig.isEncrypted) {
       try {
             try {
                   final iv1 = s?.substring(0, 16);

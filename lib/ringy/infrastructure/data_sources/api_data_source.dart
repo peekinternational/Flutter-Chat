@@ -1,10 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_chat/ringy/domain/entities/authentication/login_response.dart';
 import 'package:flutter_chat/ringy/domain/entities/authentication/register_response.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat_message/chal_file_share.dart';
@@ -31,7 +28,7 @@ class ApiDataSource implements IFacade{
   Future<Either<String, List<ChatModel>>> getChats(String senderId,
       String receiverId, String limit) async {
     try {
-      String url = APIContent.O2O_CHAT_FETCH +
+      String url = APIContent.o2oChatFetchURL +
           "/" +
           senderId +
           "/" +
@@ -43,7 +40,7 @@ class ApiDataSource implements IFacade{
           "/0";
 
       Response response;
-      response = await dio.get(APIContent.mainURL + url);
+      response = await dio.get(url);
       Iterable jsonChat = response.data;
       return right(jsonChat.map((user) => ChatModel.fromJson(user)).toList());
     } catch (e) {
@@ -55,7 +52,7 @@ class ApiDataSource implements IFacade{
   Future<Either<String, SendMessageDataModel>> sendMessage(
       SendMessageDataModel model) async {
     try {
-      String uri = APIContent.CHAT_SEND_URL;
+      String uri = APIContent.chatSendURL;
       String json = jsonEncode(model.toJson());
       print(json);
       Response response;
@@ -78,7 +75,7 @@ class ApiDataSource implements IFacade{
     try {
       _socketProvider.getSocket();
       _socketProvider.mSocketEmit(SocketHelper.emitUpdateChat, HelperModels.getUpdateChatForSocket(model));
-      String uri = APIContent.UPDATE_MESSAGE_URL;
+      String uri = APIContent.updateMessageURL;
       String json = jsonEncode(model.toJson());
 
       Response response;
@@ -101,7 +98,7 @@ class ApiDataSource implements IFacade{
       _socketProvider.getSocket();
       _socketProvider.mSocketEmit(SocketHelper.emitDeleteMessage, HelperModels.getDeleteMessageForSocket(messageId));
 
-      String url = APIContent.DELETE_MESSAGE_URL +
+      String url = APIContent.deleteMessageURL +
           "/" +
           messageId +
           "/" +
@@ -151,7 +148,7 @@ class ApiDataSource implements IFacade{
          MapEntry("file", await MultipartFile.fromFile(model.documentFile!.files.single.path!)),
        ]);
      }
-      var response = await dio.post(APIContent.CHAT_FILE_SHARE_URL, data: formData,onSendProgress: (int sent, int total) {
+      var response = await dio.post(APIContent.chatFileShareURL, data: formData,onSendProgress: (int sent, int total) {
         print('$sent $total');
       });
      if(response.statusCode == 200){
@@ -170,7 +167,7 @@ class ApiDataSource implements IFacade{
       String user_id) async {
     try {
       Response response;
-      response = await dio.post(APIContent.GetUserRing,
+      response = await dio.post(APIContent.getUserRing,
           data: {APIContent.projectId: projectId, APIContent.userId: user_id});
       Iterable jsonChat = response.data["ringData"];
       return right(
@@ -185,7 +182,7 @@ class ApiDataSource implements IFacade{
       String uID) async {
     // @GET("/{url}/{uID}/{pId}/0/0/0")
     try {
-      String url = APIContent.GetO2O_Users + "/" + uID + "/0/" + projectId;
+      String url = APIContent.getO2oUsersURL + "/" + uID + "/0/" + projectId;
 
       Response response = await dio.get(url);
       print(response.data);
@@ -227,7 +224,7 @@ class ApiDataSource implements IFacade{
       String userId,
       String password,) async {
     try {
-      String uri = APIContent.registerUser;
+      String uri = APIContent.registerUserURL;
       Response response;
       response = await dio.post(uri, data: {
         APIContent.projectId: Constants.projectId,
@@ -252,7 +249,7 @@ class ApiDataSource implements IFacade{
   Future<Either<String, String>> loginUser(String email,
       String password,) async {
     try {
-      String uri = APIContent.loginUser;
+      String uri = APIContent.loginUserURL;
       Response response;
       response = await dio.post(uri, data: {
         APIContent.projectId: Constants.projectId,
@@ -281,7 +278,7 @@ class ApiDataSource implements IFacade{
 
   Future<void> userOnlineStatus(String? userId, int pStatus) async {
     try {
-      String uri = APIContent.userOnlineStatus;
+      String uri = APIContent.userOnlineStatusURL;
       Response response = await dio.post(uri, data: {
         APIContent.projectId: Constants.projectId,
         APIContent.userId: userId,

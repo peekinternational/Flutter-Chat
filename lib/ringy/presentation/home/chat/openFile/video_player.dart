@@ -33,7 +33,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           }
     }
     _controller = VideoPlayerController.network(
-      APIContent.ImageUrl + url,
+      APIContent.imageURl + url,
     );
 
     _initializeVideoPlayerFuture = _controller.initialize();

@@ -77,9 +77,9 @@ Widget _buildAppBarSafeArea(BuildContext context, TmpDataTravel dataTravel) {
                           fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(
-                      height: 6,
+                      height: 5,
                     ),
-                    if (dataTravel.isOnlineHide == "0")
+                    if (dataTravel.isOnlineHide == "0" && dataTravel.isGroup != 1)
                       Text(
                         onlineText,
                         style: TextStyle(

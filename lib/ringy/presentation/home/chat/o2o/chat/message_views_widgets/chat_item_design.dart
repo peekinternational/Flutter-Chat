@@ -6,6 +6,7 @@ import 'package:flutter_chat/ringy/presentation/home/chat/o2o/chat/message_views
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/constants.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'audio_message_view.dart';
 import 'image_message_view.dart';
@@ -15,19 +16,20 @@ class ChatItemDesign extends StatelessWidget {
   final List<ChatModel> messages;
   final int index;
   final TextEditingController _editingController;
+  final int isGroup;
 
-  const ChatItemDesign(this.messages, this.index, this._editingController,
+  const ChatItemDesign(this.messages, this.index, this._editingController,this.isGroup,
       {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildChatList(context, messages, index, _editingController);
+    return _buildChatList(context, messages, index, _editingController,isGroup);
   }
 }
 
 Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
-    TextEditingController editingController) {
+    TextEditingController editingController,int isGroup) {
   var isMyMessage =
       messages[index].senderId?.id == Prefs.getString(Prefs.myUserId);
   var isImageOrVideo = messages[index].messageType == Constants.IMAGE_MSG ||
@@ -37,6 +39,7 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
   var isMessageDeleted = messages[index].isDeleted == 1;
   var isMessageInProgress = messages[index].isInProgress;
   var isMessageSeen = messages[index].isSeen == 1;
+  var showGroupUserName = !isMyMessage && isGroup == 1;
   return Container(
     padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
     child: Align(
@@ -68,8 +71,12 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: isMyMessage? CrossAxisAlignment.end:CrossAxisAlignment.start,
               children: [
+                showGroupUserName ?  Text("Sender Name",style: TextStyle(color: Vx.randomPrimaryColor,fontWeight: FontWeight.w600),):const SizedBox(),
+                SizedBox(
+                  height: showGroupUserName ? 6: 0,
+                ),
                 isMessageDeleted
                     ? NormalMessageView(
                         messagesList: messages,
@@ -103,8 +110,11 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
                   children: [
                     Text(
                       HelperClass.getFormatedDate(
-                              messages[index].createdAt ?? ""),
-                      style: TextStyle(color: isMyMessage ? RingyColors.tickColorSender: RingyColors.tickColorReceiver),
+                          messages[index].createdAt ?? ""),
+                      style: TextStyle(
+                          color: isMyMessage
+                              ? RingyColors.tickColorSender
+                              : RingyColors.tickColorReceiver),
                     ),
                     const SizedBox(
                       width: 5,

@@ -43,7 +43,7 @@ class ImageOrFirstCharacter extends StatelessWidget {
                       )
                 : ClipOval(
                     child: Image.network(
-                      APIContent.ImageUrl + imageUrl,
+                      APIContent.imageURl + imageUrl,
                       fit: BoxFit.cover,
                       width: 100,
                       height: 100,

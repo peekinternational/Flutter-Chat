@@ -57,6 +57,7 @@ class UserItemTile extends StatelessWidget {
     tmpDataTravel.isOnlineHide = "0";
     tmpDataTravel.isOnline = model.onlineStatus!;
     tmpDataTravel.mainUserId = model.userId!;
+    tmpDataTravel.isGroup = 0;
 
     context.pushRoute(ChatScreenRoute(dataTravel: tmpDataTravel));
   }

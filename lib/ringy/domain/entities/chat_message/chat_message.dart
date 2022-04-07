@@ -1,7 +1,4 @@
 
-
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/socket_receive_message.dart';
-
 class ChatModel {
       String? sId;
       String? message;
@@ -29,29 +26,8 @@ class ChatModel {
       bool? isInProgress = false;
 
 
-      ChatModel(); // ChatModel(
-      //     {this.sId,
-      //           this.message,
-      //           this.messageType,
-      //           this.chatType,
-      //           this.status,
-      //           this.isSeen,
-      //           this.isDeleted,
-      //
-      //           this.isGroup,
-      //           this.bookmarked,
-      //           this.receiptStatus,
-      //           this.fileSize,
-      //           this.isSeenCount,
-      //           this.hide,
-      //           this.senderId,
-      //           this.receiverId,
-      //           this.projectId,
-      //           this.senderUserId,
-      //           this.receiverUserId,
-      //           this.createdAt,
-      //           this.updatedAt,
-      //           this.iV});
+      ChatModel();
+
 
       ChatModel.fromJson(Map<String, dynamic> json) {
             sId = json['_id'];
@@ -69,13 +45,13 @@ class ChatModel {
             isSeenCount = json['isSeenCount'];
             hide = json['hide'];
             senderId = json['senderId'] != null
-                ? new SenderId.fromJson(json['senderId'])
+                ? SenderId.fromJson(json['senderId'])
                 : null;
             receiverId = json['receiverId'] != null
-                ? new SenderId.fromJson(json['receiverId'])
+                ? SenderId.fromJson(json['receiverId'])
                 : null;
             commentIdObj = json['commentId'] != null
-                ? new CommentId.fromJson(json['commentId'])
+                ? CommentId.fromJson(json['commentId'])
                 : null;
             projectId = json['projectId'];
             senderUserId = json['sender_user_id'];
@@ -86,36 +62,36 @@ class ChatModel {
       }
 
       Map<String, dynamic> toJson() {
-            final Map<String, dynamic> data = new Map<String, dynamic>();
-            data['_id'] = this.sId;
-            data['message'] = this.message;
-            data['messageType'] = this.messageType;
-            data['chatType'] = this.chatType;
-            data['status'] = this.status;
-            data['isSeen'] = this.isSeen;
-            data['isDeleted'] = this.isDeleted;
+            final Map<String, dynamic> data = <String, dynamic>{};
+            data['_id'] = sId;
+            data['message'] = message;
+            data['messageType'] = messageType;
+            data['chatType'] = chatType;
+            data['status'] = status;
+            data['isSeen'] = isSeen;
+            data['isDeleted'] = isDeleted;
 
-            data['isGroup'] = this.isGroup;
-            data['bookmarked'] = this.bookmarked;
-            data['receiptStatus'] = this.receiptStatus;
-            data['fileSize'] = this.fileSize;
-            data['isSeenCount'] = this.isSeenCount;
-            data['hide'] = this.hide;
-            if (this.senderId != null) {
-                  data['senderId'] = this.senderId!.toJson();
+            data['isGroup'] = isGroup;
+            data['bookmarked'] = bookmarked;
+            data['receiptStatus'] = receiptStatus;
+            data['fileSize'] = fileSize;
+            data['isSeenCount'] = isSeenCount;
+            data['hide'] = hide;
+            if (senderId != null) {
+                  data['senderId'] = senderId!.toJson();
             }
-            if (this.receiverId != null) {
-                  data['receiverId'] = this.receiverId!.toJson();
+            if (receiverId != null) {
+                  data['receiverId'] = receiverId!.toJson();
             }
-            if (this.commentIdObj != null) {
-                  data['commentId'] = this.commentIdObj!.toJson();
+            if (commentIdObj != null) {
+                  data['commentId'] = commentIdObj!.toJson();
             }
-            data['projectId'] = this.projectId;
-            data['sender_user_id'] = this.senderUserId;
-            data['receiver_user_id'] = this.receiverUserId;
-            data['createdAt'] = this.createdAt;
-            data['updatedAt'] = this.updatedAt;
-            data['__v'] = this.iV;
+            data['projectId'] = projectId;
+            data['sender_user_id'] = senderUserId;
+            data['receiver_user_id'] = receiverUserId;
+            data['createdAt'] = createdAt;
+            data['updatedAt'] = updatedAt;
+            data['__v'] = iV;
             return data;
       }
 }
@@ -139,12 +115,12 @@ class SenderId {
       }
 
       Map<String, dynamic> toJson() {
-            final Map<String, dynamic> data = new Map<String, dynamic>();
-            data['_id'] = this.id;
-            data['user_name'] = this.userName;
-            data['p_image'] = this.pImage;
-            data['ring_name'] = this.ringName;
-            data['ring_user_id'] = this.ringUserId;
+            final Map<String, dynamic> data = <String, dynamic>{};
+            data['_id'] = id;
+            data['user_name'] = userName;
+            data['p_image'] = pImage;
+            data['ring_name'] = ringName;
+            data['ring_user_id'] = ringUserId;
             return data;
       }
 }
@@ -236,9 +212,9 @@ class MessageData {
       }
 
       Map<String, dynamic> toJson() {
-            final Map<String, dynamic> data = new Map<String, dynamic>();
-            data['projectId'] = this.projectId;
-            data['msgData'] = this.msgData;
+            final Map<String, dynamic> data = <String, dynamic>{};
+            data['projectId'] = projectId;
+            data['msgData'] = msgData;
             return data;
       }
 }

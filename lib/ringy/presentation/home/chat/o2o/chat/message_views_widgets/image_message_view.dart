@@ -35,7 +35,7 @@ class ImageMessageView extends StatelessWidget {
               height: 200,
               filterQuality: FilterQuality.low,
               fit: BoxFit.cover,
-              imageUrl: APIContent.ImageUrl + messagesList[index].message!,
+              imageUrl: APIContent.imageURl + messagesList[index].message!,
             ),
           ),
         )

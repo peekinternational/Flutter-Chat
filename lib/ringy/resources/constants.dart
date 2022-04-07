@@ -1,8 +1,7 @@
 import 'package:flutter/rendering.dart';
 
 class Constants {
-  //TODO Message Type
-  static const bool isEncrypted = false;
+
 
 
 

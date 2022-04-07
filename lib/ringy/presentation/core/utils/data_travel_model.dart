@@ -23,6 +23,7 @@ class TmpDataTravel {
    String IsChannel="";
    int JoinOnNot =-1;
    bool IsComeFromSearchGroup=false;
+   int isGroup = 0;
 
 
    String url="";

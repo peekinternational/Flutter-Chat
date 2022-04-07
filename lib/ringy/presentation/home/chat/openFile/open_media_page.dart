@@ -47,7 +47,7 @@ Widget _buildImage(String url, BuildContext context) {
         height: double.infinity,
         filterQuality: FilterQuality.low,
         fit: BoxFit.cover,
-        imageUrl: APIContent.ImageUrl + url,
+        imageUrl: APIContent.imageURl + url,
       ),
     ),
   );

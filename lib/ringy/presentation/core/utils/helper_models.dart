@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat_message/chal_file_share.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat_message/chatusers/users_model.dart';
@@ -140,6 +141,7 @@ class HelperModels {
   static ChatModel addDummyMessageModel(
     String message,
     int messageType,
+    int isGroup,
       String receiverId,
   ) {
     SenderId receiverIdObj = SenderId();
@@ -156,13 +158,35 @@ class HelperModels {
 
     chatModel.chatType = 0;
     chatModel.messageType = messageType;
-    chatModel.isGroup = 0;
+    chatModel.isGroup = isGroup;
     chatModel.isSeen = 0;
     chatModel.receiptStatus = 1;
     chatModel.isDeleted = 0;
     chatModel.projectId = Constants.projectId;
     chatModel.isInProgress = true;
     return chatModel;
+  }
+
+  static ChatFileShareModel chatFileShareModel(
+  multiFile,
+  singleFile,
+  filePickerResult,
+  isGroup,
+    int messageType,
+      String receiverId,
+  ) {
+    ChatFileShareModel chatFileShareModel = ChatFileShareModel();
+    chatFileShareModel.multipleFiles = multiFile;
+    chatFileShareModel.singleFile = singleFile;
+    chatFileShareModel.documentFile = filePickerResult;
+    chatFileShareModel.projectId = Constants.projectId;
+    chatFileShareModel.isGroup = isGroup;
+    chatFileShareModel.senderId = Prefs.getString(Prefs.myUserId);
+    chatFileShareModel.friendId = receiverId;
+    chatFileShareModel.messageType = messageType;
+    chatFileShareModel.receiptStatus = 1;
+    chatFileShareModel.isFromMobile = 1;
+    return chatFileShareModel;
   }
 
   static SendMessageDataModel sendMessageModel(
@@ -204,7 +228,7 @@ class HelperModels {
         EncryptData.encryptAES(message, Prefs.getString(Prefs.myUserId));
     socketMsgData.chatType = 0;
     socketMsgData.messageType = 0;
-    socketMsgData.isGroup = 0;
+    socketMsgData.isGroup = tmpDataTravel.isGroup;
     socketMsgData.receiptStatus = 1;
     socketMsgData.bookmarked = 0;
     socketMsgData.senderName = Prefs.getString(Prefs.myName);

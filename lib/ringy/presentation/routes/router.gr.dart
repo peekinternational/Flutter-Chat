@@ -38,8 +38,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: LoginPage(key: args.key));
     },
     HomeRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const HomePage());
+          routeData: routeData,
+          child: HomePage(args.currentIndex, key: args.key));
     },
     RegistrationRoute.name: (routeData) {
       final args = routeData.argsAs<RegistrationRouteArgs>(
@@ -58,6 +60,16 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData,
           child: OpenMediaPage(args.isVideo, args.url, key: args.key));
+    },
+    AddGroupUsersRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const AddGroupUsersPage());
+    },
+    AddGroupSubjectRoute.name: (routeData) {
+      final args = routeData.argsAs<AddGroupSubjectRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: AddGroupSubjectPage(args.mListSelected, key: args.key));
     }
   };
 
@@ -70,7 +82,9 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(HomeRoute.name, path: '/home-page'),
         RouteConfig(RegistrationRoute.name, path: '/registration-page'),
         RouteConfig(ChatScreenRoute.name, path: '/chat-screen-page'),
-        RouteConfig(OpenMediaRoute.name, path: '/open-media-page')
+        RouteConfig(OpenMediaRoute.name, path: '/open-media-page'),
+        RouteConfig(AddGroupUsersRoute.name, path: '/add-group-users-page'),
+        RouteConfig(AddGroupSubjectRoute.name, path: '/add-group-subject-page')
       ];
 }
 
@@ -138,10 +152,26 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: '/home-page');
+class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({required int currentIndex, Key? key})
+      : super(HomeRoute.name,
+            path: '/home-page',
+            args: HomeRouteArgs(currentIndex: currentIndex, key: key));
 
   static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({required this.currentIndex, this.key});
+
+  final int currentIndex;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{currentIndex: $currentIndex, key: $key}';
+  }
 }
 
 /// generated route for
@@ -213,5 +243,39 @@ class OpenMediaRouteArgs {
   @override
   String toString() {
     return 'OpenMediaRouteArgs{isVideo: $isVideo, url: $url, key: $key}';
+  }
+}
+
+/// generated route for
+/// [AddGroupUsersPage]
+class AddGroupUsersRoute extends PageRouteInfo<void> {
+  const AddGroupUsersRoute()
+      : super(AddGroupUsersRoute.name, path: '/add-group-users-page');
+
+  static const String name = 'AddGroupUsersRoute';
+}
+
+/// generated route for
+/// [AddGroupSubjectPage]
+class AddGroupSubjectRoute extends PageRouteInfo<AddGroupSubjectRouteArgs> {
+  AddGroupSubjectRoute({required List<UsersList> mListSelected, Key? key})
+      : super(AddGroupSubjectRoute.name,
+            path: '/add-group-subject-page',
+            args: AddGroupSubjectRouteArgs(
+                mListSelected: mListSelected, key: key));
+
+  static const String name = 'AddGroupSubjectRoute';
+}
+
+class AddGroupSubjectRouteArgs {
+  const AddGroupSubjectRouteArgs({required this.mListSelected, this.key});
+
+  final List<UsersList> mListSelected;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AddGroupSubjectRouteArgs{mListSelected: $mListSelected, key: $key}';
   }
 }

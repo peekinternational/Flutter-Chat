@@ -25,7 +25,7 @@ class SocketProvider {
 
   getSocket() {
     socket = sio.io(
-      Constants.SOCKET_URL,
+      Constants.socketURL,
       sio.OptionBuilder()
           .setTransports(['websocket'])
           .setTimeout(3000)

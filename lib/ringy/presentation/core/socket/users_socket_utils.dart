@@ -4,8 +4,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chat/ringy/resources/constants.dart';
 import 'package:socket_io_client/socket_io_client.dart' as sio;
-
 abstract class SocketEventsUsers {
+  void eventListener(String eventName, Object args);
+}
+
+abstract class SocketEventsGroups {
   void eventListener(String eventName, Object args);
 }
 
@@ -23,6 +26,7 @@ class SocketProviderUsers {
   late sio.Socket socket;
   SocketProviderUsers._internal();
   SocketEventsUsers? mEventListener;
+  SocketEventsGroups? mEventListenerGroups;
   SocketEventsChat? mEventListenerChat;
 
   factory SocketProviderUsers() {
@@ -34,6 +38,9 @@ class SocketProviderUsers {
    void setEventListener(SocketEventsUsers eventListener) {
     mEventListener = eventListener;
   }
+  void setEventListenerGroups(SocketEventsGroups eventListener) {
+    mEventListenerGroups = eventListener;
+  }
   void setEventListenerChat(SocketEventsChat eventListener) {
     mEventListenerChat = eventListener;
   }
@@ -42,7 +49,7 @@ class SocketProviderUsers {
 
    getSocket()  {
     socket = sio.io(
-      Constants.SOCKET_URL,
+      Constants.socketURL,
       sio.OptionBuilder()
           .setTransports(['websocket'])
           .setTimeout(3000)
@@ -69,6 +76,7 @@ class SocketProviderUsers {
     socket.on(eventName, (data) => {
       mEventListener?.eventListener(eventName, data),
       mEventListenerChat?.eventListener(eventName, data),
+      mEventListenerGroups?.eventListener(eventName, data),
     });
   }
 

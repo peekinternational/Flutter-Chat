@@ -1,0 +1,365 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.peek.flutter_chat"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="31" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:4:5-67
+14-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:4:22-64
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:5:5-80
+15-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:5:22-78
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:6:5-80
+16-->C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app\src\main\AndroidManifest.xml:6:22-77
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-68
+17-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-65
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-79
+18-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-76
+19
+20    <queries>
+20-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-15:15
+21        <intent>
+21-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-14:18
+22            <action android:name="android.intent.action.GET_CONTENT" />
+22-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-72
+22-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:21-69
+23
+24            <data android:mimeType="*/*" />
+24-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-44
+24-->[:file_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\file_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:19-41
+25        </intent>
+26    </queries>
+27
+28    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+28-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+28-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
+29    <uses-permission android:name="android.permission.VIBRATE" />
+29-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+29-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
+30    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+30-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-81
+30-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-78
+31    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+31-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-79
+31-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-76
+32    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+32-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-83
+32-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-80
+33    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+33-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:28:5-82
+33-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:28:22-79
+34
+35    <application
+36        android:name="android.app.Application"
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.7.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\dd12ca7bacb9697bed9d63661ca8eadb\core-1.7.0\AndroidManifest.xml:24:18-86
+38        android:debuggable="true"
+39        android:hardwareAccelerated="true"
+40        android:icon="@mipmap/ic_launcher"
+41        android:label="flutter_chat" >
+42        <activity
+43            android:name="com.example.flutter_chat.MainActivity"
+44            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+45            android:exported="true"
+46            android:hardwareAccelerated="true"
+47            android:launchMode="singleTop"
+48            android:theme="@style/LaunchTheme"
+49            android:windowSoftInputMode="adjustResize" >
+50
+51            <!--
+52                 Specifies an Android theme to apply to this Activity as soon as
+53                 the Android process has started. This theme is visible to the user
+54                 while the Flutter UI initializes. After that, this theme continues
+55                 to determine the Window background behind the Flutter UI.
+56            -->
+57            <meta-data
+58                android:name="io.flutter.embedding.android.NormalTheme"
+59                android:resource="@style/NormalTheme" />
+60
+61            <intent-filter>
+62                <action android:name="android.intent.action.MAIN" />
+63
+64                <category android:name="android.intent.category.LAUNCHER" />
+65            </intent-filter>
+66        </activity>
+67        <!--
+68             Don't delete the meta-data below.
+69             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+70        -->
+71        <meta-data
+72            android:name="flutterEmbedding"
+73            android:value="2" />
+74
+75        <service
+75-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-15:72
+76            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+76-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-107
+77            android:exported="false"
+77-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+78            android:permission="android.permission.BIND_JOB_SERVICE" />
+78-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-69
+79        <service
+79-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-22:19
+80            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+80-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-97
+81            android:exported="false" >
+81-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+82            <intent-filter>
+82-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+83                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+83-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+83-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+84            </intent-filter>
+85        </service>
+86
+87        <receiver
+87-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-31:20
+88            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+88-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-98
+89            android:exported="true"
+89-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-36
+90            android:permission="com.google.android.c2dm.permission.SEND" >
+90-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-73
+91            <intent-filter>
+91-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+92                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+92-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+92-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+93            </intent-filter>
+94        </receiver>
+95
+96        <service
+96-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:33:9-37:19
+97            android:name="com.google.firebase.components.ComponentDiscoveryService"
+97-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:33:18-89
+98            android:directBootAware="true"
+98-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:35:13-43
+99            android:exported="false" >
+99-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:54:13-37
+100            <meta-data
+100-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-36:85
+101                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+101-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:35:17-128
+102                android:value="com.google.firebase.components.ComponentRegistrar" />
+102-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:36:17-82
+103            <meta-data
+103-->[:firebase_core] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+104                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+104-->[:firebase_core] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[:firebase_core] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+106            <meta-data
+106-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:55:13-57:85
+107                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+107-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:56:17-119
+108                android:value="com.google.firebase.components.ComponentRegistrar" />
+108-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:57:17-82
+109            <meta-data
+109-->[com.google.firebase:firebase-datatransport:18.1.2] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\469923a646ed7058a01a6d13b3d906cc\jetified-firebase-datatransport-18.1.2\AndroidManifest.xml:28:13-30:85
+110                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+110-->[com.google.firebase:firebase-datatransport:18.1.2] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\469923a646ed7058a01a6d13b3d906cc\jetified-firebase-datatransport-18.1.2\AndroidManifest.xml:29:17-115
+111                android:value="com.google.firebase.components.ComponentRegistrar" />
+111-->[com.google.firebase:firebase-datatransport:18.1.2] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\469923a646ed7058a01a6d13b3d906cc\jetified-firebase-datatransport-18.1.2\AndroidManifest.xml:30:17-82
+112            <meta-data
+112-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\fed39d54abb0165c85e16a7735f92452\jetified-firebase-installations-17.0.1\AndroidManifest.xml:18:13-20:85
+113                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+113-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\fed39d54abb0165c85e16a7735f92452\jetified-firebase-installations-17.0.1\AndroidManifest.xml:19:17-127
+114                android:value="com.google.firebase.components.ComponentRegistrar" />
+114-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\fed39d54abb0165c85e16a7735f92452\jetified-firebase-installations-17.0.1\AndroidManifest.xml:20:17-82
+115        </service>
+116
+117        <provider
+117-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:39:9-43:38
+118            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+118-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-102
+119            android:authorities="com.peek.flutter_chat.flutterfirebasemessaginginitprovider"
+119-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-88
+120            android:exported="false"
+120-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:42:13-37
+121            android:initOrder="99" />
+121-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:43:13-35
+122        <provider
+122-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+123            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+123-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+124            android:authorities="com.peek.flutter_chat.flutter.image_provider"
+124-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+125            android:exported="false"
+125-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+126            android:grantUriPermissions="true" >
+126-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+127            <meta-data
+127-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+128                android:name="android.support.FILE_PROVIDER_PATHS"
+128-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+129                android:resource="@xml/flutter_image_picker_file_paths" />
+129-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+130        </provider>
+131
+132        <receiver
+132-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-15:40
+133            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+133-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-97
+134            android:exported="false" />
+134-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+135        <receiver
+135-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-25:20
+136            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+136-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-101
+137            android:exported="false" >
+137-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+138            <intent-filter>
+138-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-24:29
+139                <action android:name="android.intent.action.BOOT_COMPLETED" />
+139-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-79
+139-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-76
+140                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+140-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:21:17-84
+140-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:21:25-81
+141                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+141-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:22:17-82
+141-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:22:25-79
+142                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+142-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:23:17-82
+142-->[:flutter_local_notifications] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:23:25-79
+143            </intent-filter>
+144        </receiver>
+145
+146        <provider
+146-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-21:20
+147            android:name="com.crazecoder.openfile.FileProvider"
+147-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-64
+148            android:authorities="com.peek.flutter_chat.fileProvider.com.crazecoder.openfile"
+148-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-88
+149            android:exported="false"
+149-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+150            android:grantUriPermissions="true" >
+150-->[:open_file] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+151            <meta-data
+151-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+152                android:name="android.support.FILE_PROVIDER_PATHS"
+152-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+153                android:resource="@xml/filepaths" />
+153-->[:image_picker] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+154        </provider>
+155
+156        <receiver
+156-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:31:9-38:20
+157            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+157-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:32:13-78
+158            android:exported="true"
+158-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:33:13-36
+159            android:permission="com.google.android.c2dm.permission.SEND" >
+159-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:34:13-73
+160            <intent-filter>
+160-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+161                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+161-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+161-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+162            </intent-filter>
+163        </receiver>
+164        <!--
+165             FirebaseMessagingService performs security checks at runtime,
+166             but set to not exported to explicitly avoid allowing another app to call it.
+167        -->
+168        <service
+168-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:44:9-51:19
+169            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+169-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:45:13-82
+170            android:directBootAware="true"
+170-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:46:13-43
+171            android:exported="false" >
+171-->[com.google.firebase:firebase-messaging:23.0.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\d63b9799167e365f0592693dacd5e69b\jetified-firebase-messaging-23.0.3\AndroidManifest.xml:47:13-37
+172            <intent-filter android:priority="-500" >
+172-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+173                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+173-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+173-->[:firebase_messaging] C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+174            </intent-filter>
+175        </service>
+176
+177        <provider
+177-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:26:9-31:39
+178            android:name="com.google.firebase.provider.FirebaseInitProvider"
+178-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:27:13-77
+179            android:authorities="com.peek.flutter_chat.firebaseinitprovider"
+179-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:28:13-72
+180            android:directBootAware="true"
+180-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:29:13-43
+181            android:exported="false"
+181-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:30:13-37
+182            android:initOrder="100" />
+182-->[com.google.firebase:firebase-common:20.1.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\5e712442eff52e30b8f5245998062169\jetified-firebase-common-20.1.0\AndroidManifest.xml:31:13-36
+183
+184        <activity
+184-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\cb6c2eaf23d6e7cf77fd872a8622d8a9\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+185            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+185-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\cb6c2eaf23d6e7cf77fd872a8622d8a9\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+186            android:exported="false"
+186-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\cb6c2eaf23d6e7cf77fd872a8622d8a9\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+187            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+187-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\cb6c2eaf23d6e7cf77fd872a8622d8a9\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+188
+189        <meta-data
+189-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\2459b46211dfea43ff514efa9408d680\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+190            android:name="com.google.android.gms.version"
+190-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\2459b46211dfea43ff514efa9408d680\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+191            android:value="@integer/google_play_services_version" />
+191-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\2459b46211dfea43ff514efa9408d680\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+192
+193        <uses-library
+193-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+194            android:name="androidx.window.extensions"
+194-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+195            android:required="false" />
+195-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+196        <uses-library
+196-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+197            android:name="androidx.window.sidecar"
+197-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+198            android:required="false" />
+198-->[androidx.window:window:1.0.0-beta04] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\35c73ac1ad02de4b20686f4630118480\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+199
+200        <service
+200-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:29:9-35:19
+201            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+201-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:30:13-103
+202            android:exported="false" >
+202-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:31:13-37
+203            <meta-data
+203-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:32:13-34:39
+204                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+204-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:33:17-94
+205                android:value="cct" />
+205-->[com.google.android.datatransport:transport-backend-cct:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\9c301c23cf660065bcdb14d6a0a14732\jetified-transport-backend-cct-3.1.3\AndroidManifest.xml:34:17-36
+206        </service>
+207        <service
+207-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:26:9-30:19
+208            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+208-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:27:13-117
+209            android:exported="false"
+209-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:28:13-37
+210            android:permission="android.permission.BIND_JOB_SERVICE" >
+210-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:29:13-69
+211        </service>
+212
+213        <receiver
+213-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:32:9-34:40
+214            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+214-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:33:13-132
+215            android:exported="false" />
+215-->[com.google.android.datatransport:transport-runtime:3.1.3] C:\Users\Nasir Subhan\.gradle\caches\transforms-2\files-2.1\f7735c9d3840233d24263c4aade6196c\jetified-transport-runtime-3.1.3\AndroidManifest.xml:34:13-37
+216    </application>
+217
+218</manifest>

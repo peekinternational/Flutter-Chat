@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chal_file_share.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chatusers/users_model.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/send_message_api.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/update_chat_api.dart';
-import 'package:flutter_chat/ringy/domain/entities/connect/get_user_ring.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chal_file_share.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/send_message_api.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/update_chat_api.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/groupListModel/group_list_model.dart';
 import 'package:flutter_chat/ringy/domain/i_facade.dart';
 
 import 'data_sources/api_data_source.dart';
@@ -16,39 +16,58 @@ class Repository implements IFacade {
 
   @override
   Future<Either<String, List<ChatModel>>> getChats(
-      String senderId, String receiverId, String limit) {
-    return apiDataSource.getChats(senderId, receiverId, limit);
+      String senderId, String receiverId, String limit, int isGroup) {
+    return apiDataSource.getChats(senderId, receiverId, limit, isGroup);
   }
 
   @override
-  Future<Either<String, SendMessageDataModel>> sendMessage(SendMessageDataModel model) {
+  Future<Either<String, SendMessageDataModel>> sendMessage(
+      SendMessageDataModel model) {
     return apiDataSource.sendMessage(model);
   }
+
   @override
-  Future<Either<String, ChatFileShareModel>> chatFileShare(ChatFileShareModel model) {
+  Future<Either<String, String>> sendGroupMessage(
+    String groupId,
+    String senderId,
+    String message,
+    int messageType,
+  ) {
+    return apiDataSource.sendGroupMessage(
+      groupId,
+      senderId,
+      message,
+      messageType,
+    );
+  }
+
+  @override
+  Future<Either<String, ChatFileShareModel>> chatFileShare(
+      ChatFileShareModel model) {
     return apiDataSource.chatFileShare(model);
   }
+
   @override
-  Future<Either<String, UpdateMessageDataModel>> updateMessage(UpdateMessageDataModel model) {
+  Future<Either<String, UpdateMessageDataModel>> updateMessage(
+      UpdateMessageDataModel model) {
     return apiDataSource.updateMessage(model);
   }
 
   @override
-  Future<Either<String, String>> deleteMessage(
-      String messageId,String type) {
-    return apiDataSource.deleteMessage(messageId,type);
-  }
-
-  @override
-  Future<Either<String, List<GetUserRingModel>>> getRingList(
-      String projectId, String user_id) {
-    return apiDataSource.getRingList(projectId, user_id);
+  Future<Either<String, String>> deleteMessage(String messageId, String type) {
+    return apiDataSource.deleteMessage(messageId, type);
   }
 
   @override
   Future<Either<String, List<UsersList>>> getUsersList(
       String projectId, String userId) {
     return apiDataSource.getUsersList(projectId, userId);
+  }
+
+  @override
+  Future<Either<String, List<GroupList>>> getGroupsList(
+      String projectId, String userId) {
+    return apiDataSource.getGroupsList(projectId, userId);
   }
 
   @override
@@ -64,10 +83,25 @@ class Repository implements IFacade {
 
   @override
   Future<Either<String, String>> loginUser(
-      String email,
-      String password,
-      ) {
+    String email,
+    String password,
+  ) {
     return apiDataSource.loginUser(email, password);
   }
 
+  @override
+  Future<Either<String, String>> createGroup(
+    String groupName,
+    List<UsersList> mListSelected,
+      String iconPath,
+  ) {
+    return apiDataSource.createGroup(groupName, mListSelected,iconPath);
+  }
+
+  @override
+  Future<Either<String, String>> changeProfile(
+      String textName,String textIcon,String textEmail
+  ) {
+    return apiDataSource.changeProfile(textName, textIcon,textEmail);
+  }
 }

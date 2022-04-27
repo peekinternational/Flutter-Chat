@@ -41,8 +41,7 @@ class RegistrationPage extends StatelessWidget {
       ),
       body: BlocProvider<RegistrationCubit>(
         create: (context) => RegistrationCubit(registrationCubit.repository),
-        child: SingleChildScrollView(
-            child: _registrationForm(context)),
+        child: SingleChildScrollView(child: _registrationForm(context)),
       ),
     );
   }
@@ -53,25 +52,30 @@ class RegistrationPage extends StatelessWidget {
         TextFormFiledWidget(
             label: StringsEn.fullName,
             hint: StringsEn.fullName,
+            onTextChanged: (ss) => {},
             controller: _nameController),
         TextFormFiledWidget(
             label: StringsEn.userId,
             hint: StringsEn.userId,
+            onTextChanged: (ss) => {},
             controller: _userIdController),
         TextFormFiledWidget(
             delay: 300,
             label: StringsEn.phone,
             hint: StringsEn.phone,
+            onTextChanged: (ss) => {},
             controller: _phoneController),
         TextFormFiledWidget(
             delay: 500,
             label: StringsEn.email,
             hint: StringsEn.email,
+            onTextChanged: (ss) => {},
             controller: _emailController),
         TextFormFiledWidget(
             delay: 700,
             label: StringsEn.password,
             hint: StringsEn.password,
+            onTextChanged: (ss) => {},
             controller: _passwordController),
         const SizedBox(height: 10),
         _buttonSubmit(context)
@@ -93,7 +97,7 @@ class RegistrationPage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is LoadingState) {
-          return  Center(
+          return Center(
             child: CircularProgressIndicator(
               color: RingyColors.primaryColor,
             ),

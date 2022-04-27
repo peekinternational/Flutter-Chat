@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-729733358/android.audioplayers.iml" filepath="$PROJECT_DIR$/.idea/modules/-729733358/android.audioplayers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/984944045/android.emoji_picker_flutter.iml" filepath="$PROJECT_DIR$/.idea/modules/984944045/android.emoji_picker_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1482892324/android.file_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/1482892324/android.file_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/211874429/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/211874429/android.flutter_plugin_android_lifecycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1790584072/android.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/1790584072/android.image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/253671296/android.open_file.iml" filepath="$PROJECT_DIR$/.idea/modules/253671296/android.open_file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-758800853/android.path_provider_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-758800853/android.path_provider_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/45469563/android.shared_preferences_android.iml" filepath="$PROJECT_DIR$/.idea/modules/45469563/android.shared_preferences_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1192629661/android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-1192629661/android.sqflite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1993973953/android.video_player_android.iml" filepath="$PROJECT_DIR$/.idea/modules/1993973953/android.video_player_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1647797854/android.wakelock.iml" filepath="$PROJECT_DIR$/.idea/modules/-1647797854/android.wakelock.iml" />
+    </modules>
+  </component>
+</project>

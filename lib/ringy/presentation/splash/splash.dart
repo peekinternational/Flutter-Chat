@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
           context.router.replace(const SignInOptionsRoute())
         } : {
           context.router.removeLast(),
-          context.router.replace(const HomeRoute())
+          context.router.replace(HomeRoute(currentIndex: 0))
         };
       },
     );

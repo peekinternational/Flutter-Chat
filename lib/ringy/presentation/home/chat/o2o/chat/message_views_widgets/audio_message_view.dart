@@ -2,7 +2,7 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/constants.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';

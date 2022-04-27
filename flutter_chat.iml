@@ -18,6 +18,9 @@
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/build" />
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_chat/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_chat/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_chat/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

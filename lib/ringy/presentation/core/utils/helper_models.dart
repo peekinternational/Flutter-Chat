@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chal_file_share.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chal_file_share.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/send_message_api.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/update_chat_api.dart';
+import 'package:flutter_chat/ringy/domain/entities/socket_models/file_share_response.dart';
+import 'package:flutter_chat/ringy/domain/entities/socket_models/socket_delete_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/socket_models/socket_edit_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/socket_models/socket_receive_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chatusers/users_model.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/send_message_api.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/file_share_response.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/socket_delete_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/socket_edit_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/socket_receive_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/update_chat_api.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/encryption_utils.dart';
 import 'package:flutter_chat/ringy/resources/constants.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
@@ -84,12 +84,14 @@ class HelperModels {
     senderIds.sId = fileShareResponse.data?.senderId;
     socketMsgData.senderId = senderIds;
     SenderIds receiverId = SenderIds();
-    receiverId.sId = fileShareResponse.data?.receiverId;
+    receiverId.sId = fileShareResponse.data?.isGroup == 0
+        ? fileShareResponse.data?.receiverId
+        : fileShareResponse.data?.groupId;
     socketMsgData.receiverId = receiverId;
     socketMsgData.bookmarkedChat = [];
 
     socketReceiveMessage.userId = fileShareResponse.data?.senderId;
-    socketReceiveMessage.selectFrienddata = fileShareResponse.data?.receiverId;
+    socketReceiveMessage.selectFrienddata = receiverId.sId;
     socketReceiveMessage.msgData = socketMsgData;
     Object object = socketReceiveMessage.toJson();
     return object;
@@ -113,16 +115,17 @@ class HelperModels {
     socketMsgData.senderName = Prefs.getString(Prefs.myName);
     socketMsgData.senderImage = Prefs.getString(Prefs.myImage);
     SenderIds senderIds = SenderIds();
-    senderIds.sId = simpleMessageResponse.senderId!.id;
+    senderIds.sId = Prefs.getString(Prefs.myUserId);
     socketMsgData.senderId = senderIds;
     SenderIds receiverId = SenderIds();
-    receiverId.sId = simpleMessageResponse.receiverId!.id;
+    receiverId.sId = simpleMessageResponse.isGroup == 0
+        ? simpleMessageResponse.receiverId?.id
+        : simpleMessageResponse.groupId;
     socketMsgData.receiverId = receiverId;
     socketMsgData.bookmarkedChat = [];
 
-    socketReceiveMessage.userId = simpleMessageResponse.senderId!.id;
-    socketReceiveMessage.selectFrienddata =
-        simpleMessageResponse.receiverId!.id;
+    socketReceiveMessage.userId = simpleMessageResponse.senderId!.id ?? "";
+    socketReceiveMessage.selectFrienddata = receiverId.sId;
     socketReceiveMessage.msgData = socketMsgData;
     Object object = socketReceiveMessage.toJson();
     return object;
@@ -142,7 +145,7 @@ class HelperModels {
     String message,
     int messageType,
     int isGroup,
-      String receiverId,
+    String receiverId,
   ) {
     SenderId receiverIdObj = SenderId();
     receiverIdObj.id = receiverId;
@@ -168,12 +171,12 @@ class HelperModels {
   }
 
   static ChatFileShareModel chatFileShareModel(
-  multiFile,
-  singleFile,
-  filePickerResult,
-  isGroup,
+    multiFile,
+    singleFile,
+    filePickerResult,
+    isGroup,
     int messageType,
-      String receiverId,
+    String receiverId,
   ) {
     ChatFileShareModel chatFileShareModel = ChatFileShareModel();
     chatFileShareModel.multipleFiles = multiFile;
@@ -190,13 +193,14 @@ class HelperModels {
   }
 
   static SendMessageDataModel sendMessageModel(
-      TmpDataTravel tmpDataTravel, String message,int messageType) {
+      TmpDataTravel tmpDataTravel, String message, int messageType) {
     SendMessageData msgData = SendMessageData();
     msgData.senderId = Prefs.getString(Prefs.myUserId);
     msgData.senderName = Prefs.getString(Prefs.myName);
     msgData.senderImage = Prefs.getString(Prefs.myImage);
     msgData.receiverId = tmpDataTravel.recieverId;
     msgData.receiverImage = tmpDataTravel.image;
+    msgData.isGroup = tmpDataTravel.isGroup;
     msgData.message =
         EncryptData.encryptAES(message, Prefs.getString(Prefs.myUserId));
     msgData.messageType = messageType;
@@ -284,10 +288,9 @@ class HelperModels {
             ));
   }
 
-
   static TmpDataTravel getUserListToTempDataTravel(
-      UsersList list,
-      ) {
+    UsersList list,
+  ) {
     var tmpDataTravel = TmpDataTravel();
     tmpDataTravel.recieverId = list.sId!;
     tmpDataTravel.image = list.userImage!;

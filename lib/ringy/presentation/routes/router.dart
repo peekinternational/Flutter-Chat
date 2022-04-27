@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
+import 'package:flutter_chat/ringy/presentation/home/chat/group/create_group/add_group_subject_page.dart';
+import 'package:flutter_chat/ringy/presentation/home/chat/group/create_group/add_group_users_page.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/chat/chat.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/o2o_users.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/openFile/open_media_page.dart';
@@ -23,6 +26,8 @@ part 'router.gr.dart';
     AutoRoute(page: RegistrationPage),
     AutoRoute(page: ChatScreenPage),
     AutoRoute(page: OpenMediaPage),
+    AutoRoute(page: AddGroupUsersPage),
+    AutoRoute(page: AddGroupSubjectPage),
 
   ],
 )

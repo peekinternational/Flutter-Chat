@@ -9,6 +9,8 @@ class TextFormFiledWidget extends StatelessWidget {
   final bool isOptional;
   final TextEditingController controller;
   final int delay;
+  final bool isEnabled;
+  final Function(String ss) onTextChanged;
 
   const TextFormFiledWidget(
       {Key? key,
@@ -16,7 +18,10 @@ class TextFormFiledWidget extends StatelessWidget {
       required this.hint,
       this.isOptional = false,
       required this.controller,
-      this.delay = 0})
+      required this.onTextChanged,
+      this.delay = 0,
+      this.isEnabled = true,
+      })
       : super(key: key);
 
   @override
@@ -30,6 +35,8 @@ class TextFormFiledWidget extends StatelessWidget {
           delay: Duration(milliseconds: delay),
           child: TextFormField(
             controller: controller,
+            enabled: isEnabled,
+            onChanged: onTextChanged,
             obscureText: label == StringsEn.password,
             decoration: InputDecoration(
                 border: const OutlineInputBorder(),

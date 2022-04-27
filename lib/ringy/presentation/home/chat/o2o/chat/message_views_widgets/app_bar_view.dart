@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_chat/ringy/application/bloc/chat/chat_list_bloc/chat_list_bloc.dart';
+import 'package:flutter_chat/ringy/application/bloc/chat_list_bloc/chat_list_bloc.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/image_or_first_character_users.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';

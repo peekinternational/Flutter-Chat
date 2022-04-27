@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search_icon</title>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="14_Call-Meeting" transform="translate(-317.000000, -103.000000)" stroke="#9AA2B6" stroke-width="1.2">
+            <g id="Group-9" transform="translate(0.000000, 88.000000)">
+                <g id="search_icon" transform="translate(318.000000, 16.000000)">
+                    <circle id="Oval" cx="8.88888889" cy="8.88888889" r="8.88888889"></circle>
+                    <line x1="20" y1="20" x2="15.1666667" y2="15.1666667" id="Path"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

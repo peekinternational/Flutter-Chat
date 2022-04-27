@@ -1,6 +1,11 @@
 class SocketHelper {
   static String singleSendMessage = "sendmsg";
   static String singleMessageReceived = "receivemsg";
+
+  static String emitGroupMessage = "sendgroupmsg";
+  static String onGroupMessageReceived = "receivegroupmsg";
+
+
   static String emitStartMsgTyping = "msgtyping";
   static String onStartMsgTyping = "starttyping";
   static String emitStopMsgTyping = "stopTyping";

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/chat/message_views_widgets/file_message_view.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/chat/message_views_widgets/video_message_view.dart';
@@ -32,10 +32,10 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
     TextEditingController editingController,int isGroup) {
   var isMyMessage =
       messages[index].senderId?.id == Prefs.getString(Prefs.myUserId);
-  var isImageOrVideo = messages[index].messageType == Constants.IMAGE_MSG ||
-      messages[index].messageType == Constants.VIDEO_MSG;
-  var isAudioOrFile = messages[index].messageType == Constants.AUDIO_MSG ||
-      messages[index].messageType == Constants.FILE_MSG;
+  var isImageOrVideo = messages[index].messageType == Constants.imageMSG ||
+      messages[index].messageType == Constants.videoMSG;
+  var isAudioOrFile = messages[index].messageType == Constants.audioMSG ||
+      messages[index].messageType == Constants.fileMSG;
   var isMessageDeleted = messages[index].isDeleted == 1;
   var isMessageInProgress = messages[index].isInProgress;
   var isMessageSeen = messages[index].isSeen == 1;
@@ -73,7 +73,7 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: isMyMessage? CrossAxisAlignment.end:CrossAxisAlignment.start,
               children: [
-                showGroupUserName ?  Text("Sender Name",style: TextStyle(color: Vx.randomPrimaryColor,fontWeight: FontWeight.w600),):const SizedBox(),
+                showGroupUserName ?  Text(messages[index].senderId!.userName?? "sender Name",style: TextStyle(color: Vx.randomPrimaryColor,fontWeight: FontWeight.w600),):const SizedBox(),
                 SizedBox(
                   height: showGroupUserName ? 6: 0,
                 ),
@@ -82,16 +82,16 @@ Widget _buildChatList(BuildContext context, List<ChatModel> messages, int index,
                         messagesList: messages,
                         index: index,
                       )
-                    : messages[index].messageType == Constants.VIDEO_MSG
+                    : messages[index].messageType == Constants.videoMSG
                         ? VideoMessageView(messagesList: messages, index: index)
-                        : messages[index].messageType == Constants.IMAGE_MSG
+                        : messages[index].messageType == Constants.imageMSG
                             ? ImageMessageView(
                                 messagesList: messages, index: index)
-                            : messages[index].messageType == Constants.AUDIO_MSG
+                            : messages[index].messageType == Constants.audioMSG
                                 ? AudioMessageView(
                                     messagesList: messages, index: index)
                                 : messages[index].messageType ==
-                                        Constants.FILE_MSG
+                                        Constants.fileMSG
                                     ? FileMessageView(
                                         messagesList: messages,
                                         index: index,

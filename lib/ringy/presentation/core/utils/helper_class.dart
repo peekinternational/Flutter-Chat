@@ -1,7 +1,9 @@
 
 
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/message_enum.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/encryption_utils.dart';
@@ -20,7 +22,7 @@ class HelperClass {
       return outputFormat.format(inputDate);
     } catch (e) {
       print(e);
-      return "now";
+      return "";
     }
   }
 
@@ -48,20 +50,20 @@ class HelperClass {
   }
 
   static String checkLastMessage(
-      String message, int messageType, latestMsgSenderId) {
+      String message, int? messageType, latestMsgSenderId) {
     return message == ""
         ? StringsEn.noChatFound
-        : messageType == Constants.NORMAL_MSG
+        : messageType == Constants.normalMSG
             ? EncryptData.decryptAES(message, latestMsgSenderId)
-            : messageType == Constants.IMAGE_MSG
+            : messageType == Constants.imageMSG
                 ? StringsEn.image
-                : messageType == Constants.VIDEO_MSG
+                : messageType == Constants.videoMSG
                     ? StringsEn.video
-                    : messageType == Constants.FILE_MSG
+                    : messageType == Constants.fileMSG
                         ? StringsEn.file
-                        : messageType == Constants.AUDIO_MSG
+                        : messageType == Constants.audioMSG
                             ? StringsEn.audio
-                            : messageType == Constants.LOCATION_MSG
+                            : messageType == Constants.locationMSG
                                 ? StringsEn.location
                                 : "";
   }
@@ -74,5 +76,48 @@ class HelperClass {
     path = '${dir.path}/"file"/$uniqueFileName';
 
     return path;
+  }
+  static double getPercentage()  {
+
+    double percentage = 0.0;
+    if(Prefs.getString(Prefs.myImage) != ""){
+      percentage += 0.25;
+    }
+    if(Prefs.getString(Prefs.myName) != ""){
+      percentage += 0.25;
+    }
+    if(Prefs.getString(Prefs.myMail) != ""){
+      percentage += 0.25;
+    }
+    if(Prefs.getString(Prefs.myUserId) != ""){
+      percentage += 0.25;
+    }
+
+    return percentage;
+  }
+
+
+  static String constructFCMPayload(List<String> token, String title,String body) {
+    var res = jsonEncode({
+      // 'token': token,
+      'notification': {
+        "title": title,
+        "body" : body
+      },
+      "priority": "high",
+      'data': {
+        "message": " data message",
+      },
+      'registration_ids':token,
+      // 'to': token,
+    });
+
+    print(res.toString());
+    return res;
+  }
+
+  static Future<String?> getFcmToken() async {
+    var res = await FirebaseMessaging.instance.getToken();
+    return res;
   }
 }

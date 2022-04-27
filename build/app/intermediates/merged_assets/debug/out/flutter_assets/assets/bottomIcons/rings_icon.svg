@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>UserIcon</title>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="14_Call-Meeting" transform="translate(-250.000000, -736.000000)" stroke="#C1C8D9" stroke-width="1.5">
+            <g id="Footer-Tabs" transform="translate(0.000000, 729.000000)">
+                <g id="1" transform="translate(225.500000, 0.000000)">
+                    <g id="UserIcon" transform="translate(25.500000, 8.000000)">
+                        <circle id="Oval" cx="14.7647059" cy="16.4117647" r="3.52941176"></circle>
+                        <circle id="Oval" cx="11.7647059" cy="11.7647059" r="11.7647059"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

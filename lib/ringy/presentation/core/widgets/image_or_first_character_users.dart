@@ -10,6 +10,7 @@ class ImageOrFirstCharacterUsers extends StatelessWidget {
   String name;
   int onlineStatus;
   bool showOnlineStatus;
+  bool forGroupSelection;
 
   ImageOrFirstCharacterUsers({
     Key? key,
@@ -19,6 +20,7 @@ class ImageOrFirstCharacterUsers extends StatelessWidget {
     required this.name,
     required this.onlineStatus,
     this.showOnlineStatus = false,
+    this.forGroupSelection = false,
   }) : super(key: key);
 
   @override
@@ -57,17 +59,31 @@ class ImageOrFirstCharacterUsers extends StatelessWidget {
                       fit: BoxFit.cover,
                       width: 100,
                       height: 100,
+                      errorBuilder: (context, url, error) {
+                        return name == ""
+                            ? const Text("")
+                            : Center(
+                                child: Text(
+                                  getFirstTwoCharOfUserName(name),
+                                  style: TextStyle(
+                                      color: RingyColors.primaryColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              );
+                      },
                     ),
                   ),
             radius: radius + 0,
           ),
           Padding(
-              padding: const EdgeInsets.all(2),
+              padding: const EdgeInsets.all(3),
               child: Align(
                   alignment: Alignment.bottomRight,
                   child: CircleAvatar(
                     backgroundColor: onlineStatusIconColor,
                     radius: 6,
+                    child: forGroupSelection ?  Icon(Icons.check_circle,color: RingyColors.primaryColor,):const SizedBox(),
                     // Icon(Icons.error, size: 12, color: onlineStatusIconColor)),
                   )))
         ],

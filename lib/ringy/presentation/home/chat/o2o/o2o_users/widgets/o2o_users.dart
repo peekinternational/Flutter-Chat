@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_chat/ringy/application/bloc/users/user_list/user_list_bloc.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chatusers/users_model.dart';
+import 'package:flutter_chat/ringy/application/bloc/user_list/user_list_bloc.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/no_user_widget.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/user_item_forward_tile.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/user_item_tile.dart';
@@ -16,7 +16,6 @@ import '../../../../../../../injections.dart';
 class O2OUsersPage extends StatelessWidget {
   final bool showUsers;
 
-
   const O2OUsersPage(this.showUsers, {Key? key}) : super(key: key);
 
   @override
@@ -26,6 +25,9 @@ class O2OUsersPage extends StatelessWidget {
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: RingyColors.lightWhite,
+          ),
+          iconTheme: const IconThemeData(
+            color: Colors.black, //change your color here
           ),
           elevation: 0,
           centerTitle: true,
@@ -38,14 +40,18 @@ class O2OUsersPage extends StatelessWidget {
         ),
         body: BlocProvider<UserListBloc>(
           create: (context) => userListBloc
-            ..add(GetUsersEvent(
-                Constants.projectId, Prefs.getString(Prefs.myUserId)!,showUsers)),
+            ..add(GetUsersEvent(Constants.projectId,
+                Prefs.getString(Prefs.myUserId)!, showUsers)),
           child: BlocBuilder<UserListBloc, UserListState>(
             builder: (context, state) {
               if (state is LoadedState) {
-                return _buildBody(context, state.users,showUsers);
+                var mList = state.users;
+                mList.sort((a, b) =>
+                    a.latestMsgCreatedAt.compareTo(b.latestMsgCreatedAt));
+                return _buildBody(context, mList, showUsers);
               } else if (state is NoUsersState) {
-                return  const NoItemWidget(StringsEn.noFriendsFound,Icons.group);
+                return const NoItemWidget(
+                    StringsEn.noFriendsFound, Icons.group);
               } else {
                 return Center(
                     child: CircularProgressIndicator(
@@ -60,7 +66,7 @@ class O2OUsersPage extends StatelessWidget {
   }
 }
 
-Widget _buildBody(BuildContext context, List<UsersList> list,bool showUsers) {
+Widget _buildBody(BuildContext context, List<UsersList> list, bool showUsers) {
   return ListView.separated(
     shrinkWrap: true,
     itemCount: list.length,
@@ -69,7 +75,14 @@ Widget _buildBody(BuildContext context, List<UsersList> list,bool showUsers) {
       endIndent: 20,
     ),
     itemBuilder: (BuildContext context, int index) {
-      return showUsers? UserItemForwardTile(model: list[index]):UserItemTile(model: list[index]);
+      final revereIndex = list.length - 1 - index;
+      return showUsers
+          ? UserItemForwardTile(model: list[revereIndex])
+          : UserItemTile(
+              userModel: list[revereIndex],
+              groupModel: null,
+              isGroup: false,
+            );
     },
   );
 }

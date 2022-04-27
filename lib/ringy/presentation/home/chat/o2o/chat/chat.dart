@@ -6,11 +6,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_chat/ringy/application/bloc/chat/chat_list_bloc/chat_list_bloc.dart';
-import 'package:flutter_chat/ringy/application/bloc/chat/send_chat/send_chat_bloc.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chatusers/users_model.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/socket_models/typing.dart';
+import 'package:flutter_chat/ringy/application/bloc/chat_list_bloc/chat_list_bloc.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/socket_models/typing.dart';
+import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:flutter_chat/ringy/infrastructure/API/api_content.dart';
 import 'package:flutter_chat/ringy/infrastructure/API/dio_client.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
@@ -58,7 +57,8 @@ class ChatScreenPage extends StatelessWidget {
               ..add(GetChatsEvent(
                   senderId: myID,
                   receiverId: dataTravel.recieverId,
-                  limit: "100")),
+                  limit: "100",
+                  isGroup: dataTravel.isGroup)),
             child: AppBarChat(dataTravel),
           ),
         ),
@@ -67,7 +67,8 @@ class ChatScreenPage extends StatelessWidget {
               ..add(GetChatsEvent(
                   senderId: myID,
                   receiverId: dataTravel.recieverId,
-                  limit: "100")),
+                  limit: "100",
+                  isGroup: dataTravel.isGroup)),
             child: BlocBuilder<ChatListBloc, ChatListState>(
                 buildWhen: (previous, current) =>
                     previous != current && current is! AppBarRefreshState,
@@ -88,7 +89,8 @@ class ChatScreenPage extends StatelessWidget {
                                 ..add(GetChatsEvent(
                                     senderId: myID,
                                     receiverId: dataTravel.recieverId,
-                                    limit: "100")),
+                                    limit: "100",
+                                    isGroup: dataTravel.isGroup)),
                             });
                   }
                   return Center(
@@ -115,118 +117,113 @@ class ChatScreenPage extends StatelessWidget {
 
   Widget _buildInput(BuildContext context, List<ChatModel> messages,
       ChatListBloc chatListBloc) {
-    var msgEntered = "";
-    final SendChatBloc sendChatObj = serviceLocator<SendChatBloc>();
-    return BlocProvider<SendChatBloc>(
-        create: (context) => sendChatObj,
-        child: BlocBuilder<SendChatBloc, SendChatState>(
-            builder: (context, SendChatState state) {
-          return Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                  // height: 70,
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: Row(
-                    children: <Widget>[
-                      !isEditMessage
-                          ? GestureDetector(
-                              onTap: () {
-                                _showBottomMenu(context);
-                              },
-                              child: Transform.rotate(
-                                angle: 45,
-                                child: const Icon(
-                                  Icons.attach_file,
-                                  color: Colors.black38,
-                                  size: 25,
-                                ),
-                              ),
-                            )
-                          : const SizedBox(),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(80)),
-                              color: RingyColors.lightWhite,
-                              border: Border.all(color: Colors.black12)),
-                          child: Row(
-                            children: [
-                              InkWell(
-                                  onTap: () => {},
-                                  child: const Icon(
-                                      Icons.emoji_emotions_outlined)),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  maxLines: 4,
-                                  minLines: 1,
-                                  keyboardType: TextInputType.multiline,
-                                  focusNode: focus,
-                                  controller: _editingController,
-                                  decoration: const InputDecoration(
-                                    hintText: StringsEn.enterMessage,
-                                    hintStyle: TextStyle(color: Colors.black54),
-                                    border: InputBorder.none,
-                                  ),
-                                  onChanged: (text) {
-                                    msgEntered = text;
-                                    SocketTyping socketTyping = SocketTyping();
-                                    socketTyping.userId = myID;
-                                    socketTyping.selectFrienddata =
-                                        dataTravel.recieverId;
-                                    socketTyping.lastmsg =
-                                        messages[messages.length - 1].message;
-                                    chatListBloc
-                                        .add(TypingEvent(socketTyping, true));
-                                  },
-                                ),
-                              ),
-                            ],
+    return Stack(
+      children: <Widget>[
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+            // height: 70,
+            width: double.infinity,
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                !isEditMessage
+                    ? GestureDetector(
+                  onTap: () {
+                    _showBottomMenu(context);
+                  },
+                  child: Transform.rotate(
+                    angle: 45,
+                    child: const Icon(
+                      Icons.attach_file,
+                      color: Colors.black38,
+                      size: 25,
+                    ),
+                  ),
+                )
+                    : const SizedBox(),
+                const SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                        const BorderRadius.all(Radius.circular(80)),
+                        color: RingyColors.lightWhite,
+                        border: Border.all(color: Colors.black12)),
+                    child: Row(
+                      children: [
+                        InkWell(
+                            onTap: () => {},
+                            child: const Icon(
+                                Icons.emoji_emotions_outlined)),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: TextField(
+                            maxLines: 4,
+                            minLines: 1,
+                            keyboardType: TextInputType.multiline,
+                            focusNode: focus,
+                            controller: _editingController,
+                            decoration: const InputDecoration(
+                              hintText: StringsEn.enterMessage,
+                              hintStyle: TextStyle(color: Colors.black54),
+                              border: InputBorder.none,
+                            ),
+                            onChanged: (text) {
+                              if (dataTravel.isGroup == 0) {
+                                SocketTyping socketTyping =
+                                SocketTyping();
+                                socketTyping.userId = myID;
+                                socketTyping.selectFrienddata =
+                                    dataTravel.recieverId;
+                                socketTyping.lastmsg =
+                                    messages[messages.length - 1].message;
+                                chatListBloc
+                                    .add(TypingEvent(socketTyping, true));
+                              }
+                            },
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          if (_editingController.text != "") {
-                            sendSimpleChat(context, _editingController.text,
-                                chatListBloc, 0, dataTravel);
-                          }
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(1)),
-                            color: RingyColors.lightWhite,
-                          ),
-                          child: const Icon(
-                            Icons.send,
-                            size: 18,
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          );
-        }));
+                const SizedBox(
+                  width: 15,
+                ),
+                InkWell(
+                  onTap: () {
+                    if (_editingController.text != "") {
+                      sendSimpleChat(context, _editingController.text,
+                          chatListBloc, 0, dataTravel);
+                    }
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(1)),
+                      color: RingyColors.lightWhite,
+                    ),
+                    child: const Icon(
+                      Icons.send,
+                      size: 18,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildListMessage(BuildContext context, List<ChatModel> messages) {
@@ -268,9 +265,17 @@ class ChatScreenPage extends StatelessWidget {
       //     HelperModels.sendMessageToSocketModel(tmpDataTravel, message),
       //     messages));
 
-      BlocProvider.of<ChatListBloc>(context).repository.sendMessage(
-          HelperModels.sendMessageModel(tmpDataTravel, message, messageType));
-      scrollController.jumpTo(scrollController.position.minScrollExtent);
+      if (dataTravel.isGroup == 0) {
+        BlocProvider.of<ChatListBloc>(context).repository.sendMessage(
+            HelperModels.sendMessageModel(tmpDataTravel, message, messageType));
+      } else {
+        BlocProvider.of<ChatListBloc>(context).repository.sendGroupMessage(
+            tmpDataTravel.recieverId, myID, message, messageType);
+      }
+      if (mList.isNotEmpty) {
+        scrollController.jumpTo(scrollController.position.minScrollExtent);
+      }
+
       if (tmpDataTravel.recieverId == dataTravel.recieverId) {
         mList.add(HelperModels.addDummyMessageModel(message, messageType,
             tmpDataTravel.isGroup, tmpDataTravel.recieverId));
@@ -324,20 +329,20 @@ class ChatScreenPage extends StatelessWidget {
   _getFromCamera(BuildContext context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-    shareFile(null, photo, null, Constants.IMAGE_MSG, context);
+    shareFile(null, photo, null, Constants.imageMSG, context);
   }
 
   _getFromGallery(BuildContext context) async {
     final ImagePicker _picker = ImagePicker();
     List<XFile>? photo = await _picker.pickMultiImage();
-    shareFile(photo!, null, null, Constants.IMAGE_MSG, context);
+    shareFile(photo!, null, null, Constants.imageMSG, context);
     // final XFile? photo = await _picker.pickImage(source: ImageSource.gallery);
   }
 
   _getVideo(BuildContext context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
-    shareFile(null, video!, null, Constants.VIDEO_MSG, context);
+    shareFile(null, video!, null, Constants.videoMSG, context);
   }
 
   _getFile(BuildContext context) async {
@@ -356,7 +361,7 @@ class ChatScreenPage extends StatelessWidget {
     );
 
     if (result != null) {
-      shareFile(null, null, result, Constants.FILE_MSG, context);
+      shareFile(null, null, result, Constants.fileMSG, context);
     }
   }
 
@@ -425,7 +430,7 @@ class ChatScreenPage extends StatelessWidget {
       FilePickerResult? filePickerResult,
       int messageType,
       BuildContext context) {
-    BlocProvider.of<SendChatBloc>(context).repository.chatFileShare(
+    BlocProvider.of<ChatListBloc>(context).repository.chatFileShare(
         HelperModels.chatFileShareModel(multiFile, singleFile, filePickerResult,
             dataTravel.isGroup, messageType, dataTravel.recieverId));
 
@@ -444,8 +449,9 @@ class ChatScreenPage extends StatelessWidget {
         message, messageType, dataTravel.isGroup, dataTravel.recieverId));
 
     chatListBloc.add(UpdateChatsEvent(null, mList));
-
-    scrollController.jumpTo(scrollController.position.minScrollExtent);
+    if (mList.isNotEmpty) {
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
+    }
   }
 
   Future<void> _openFile(BuildContext context, ChatModel message) async {
@@ -454,12 +460,12 @@ class ChatScreenPage extends StatelessWidget {
       return;
     }
 
-    if (message.messageType == Constants.IMAGE_MSG ||
-        message.messageType == Constants.VIDEO_MSG) {
+    if (message.messageType == Constants.imageMSG ||
+        message.messageType == Constants.videoMSG) {
       context.pushRoute(OpenMediaRoute(
-          isVideo: message.messageType == Constants.VIDEO_MSG,
+          isVideo: message.messageType == Constants.videoMSG,
           url: message.message!));
-    } else if (message.messageType == Constants.FILE_MSG) {
+    } else if (message.messageType == Constants.fileMSG) {
       File ff = File(await HelperClass.getFilePath(message.message!));
       if (ff.existsSync()) {
         open.OpenFile.open(ff.path);

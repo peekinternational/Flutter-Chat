@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>friend_request_icon</title>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="14_Call-Meeting" transform="translate(-19.000000, -55.000000)" stroke="#5061AC" stroke-width="1.2">
+            <g id="friend_request_icon" transform="translate(20.000000, 56.000000)">
+                <rect id="Rectangle" x="10.9090909" y="5.45454545" width="5.45454545" height="6.36363636" rx="2.27272727"></rect>
+                <path d="M10.9090909,14.5454545 L16.3636364,14.5454545 C17.8698675,14.5454545 19.0909091,15.7664961 19.0909091,17.2727273 L19.0909091,19.5454545 C19.0909091,19.7964931 18.8874022,20 18.6363636,20 L8.63636364,20 C8.38532511,20 8.18181818,19.7964931 8.18181818,19.5454545 L8.18181818,17.2727273 C8.18181818,15.7664961 9.40285977,14.5454545 10.9090909,14.5454545 Z" id="Rectangle" stroke-linejoin="round"></path>
+                <g id="arrow-left" transform="translate(2.727273, 2.727273)" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5.3030303,2.65151515 L0.378787879,2.65151515 M2.65151515,0 L0,2.65151515 L2.65151515,5.3030303" id="Shape"></path>
+                    <path d="M6.57575758,6.92424242 L1.65151515,6.92424242 M3.92424242,4.27272727 L1.27272727,6.92424242 L3.92424242,9.57575758" id="Shape" transform="translate(3.924242, 6.924242) scale(-1, 1) translate(-3.924242, -6.924242) "></path>
+                </g>
+                <path d="M5.49370055,20 L5.49370055,20 L1.81818182,20 C0.814027728,20 0,19.1859723 0,18.1818182 L0,1.81818182 C0,0.814027728 0.814027728,0 1.81818182,0 L18.1818182,0 C19.1859723,0 20,0.814027728 20,1.81818182 L20,5.45368512 L20,5.45368512" id="Path" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

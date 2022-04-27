@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/ringy/domain/entities/chat_message/chat_message.dart';
+import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 

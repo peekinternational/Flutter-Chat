@@ -49,10 +49,16 @@ class LoginPage extends StatelessWidget {
         TextFormFiledWidget(
             label: StringsEn.email,
             hint: StringsEn.email,
+            onTextChanged: (ss) => {
+
+            },
             controller: _emailController),
         TextFormFiledWidget(
             label: StringsEn.password,
             hint: StringsEn.password,
+            onTextChanged: (ss) => {
+
+            },
             controller: _passwordController),
         const SizedBox(height: 10),
         _buttonLoginButton(context)
@@ -68,8 +74,9 @@ class LoginPage extends StatelessWidget {
         } else if (state is ErrorState) {
           VxToast.show(context, msg: state.error);
         } else if (state is SuccessState) {
-          context.router.removeLast();
-          context.router.replace(const HomeRoute());
+          context.router.replaceAll([
+            HomeRoute(currentIndex: 0)
+          ]);
           // context.popRoute();
         }
       },

@@ -51,6 +51,12 @@ class StringsEn {
   static const String downloading = "downloading..";
   static const String downloadingFailedToast = "downloading Failed!";
   static const String downloadingInProgressValidation = "download in progress please wait";
+  static const String noUserSelectedForGroupValidation = "At least 1 user must be selected";
+  static const String noSubjectSelectedForGroupValidation = "Subject must be selected for group";
+  static const String newGroup = "New Group";
+  static const String addParticipant = "Add participants";
+  static const String addSubject = "Add Subject";
+  static const String save = "Save";
 
 
   // static const String phone = "Enter Email";

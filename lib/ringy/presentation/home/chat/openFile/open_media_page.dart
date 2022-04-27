@@ -5,13 +5,11 @@ import 'package:flutter_chat/ringy/infrastructure/API/api_content.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/openFile/video_player.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
 
-
 class OpenMediaPage extends StatelessWidget {
   final bool isVideo;
   final String url;
 
   const OpenMediaPage(this.isVideo, this.url, {Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,6 @@ class OpenMediaPage extends StatelessWidget {
       body: isVideo ? VideoPlayerScreen(url) : _buildImage(url, context),
     );
   }
-
 }
 
 Widget _buildImage(String url, BuildContext context) {

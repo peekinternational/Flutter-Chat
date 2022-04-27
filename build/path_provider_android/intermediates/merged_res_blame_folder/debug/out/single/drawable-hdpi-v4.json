@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    }
+]

@@ -8,13 +8,19 @@ class ButtonsFormWidgets extends StatelessWidget {
   final String textString;
   final VoidCallback onTap;
   final int delay;
+  final double width;
+  final double height;
+  final double gapBetween;
 
   const ButtonsFormWidgets(
       {Key? key,
       required this.iconData,
       required this.textString,
       required this.onTap,
-      this.delay = 0
+      this.delay = 0,
+      this.width = 200,
+      this.height = 50,
+      this.gapBetween = 10,
       })
       : super(key: key);
 
@@ -26,8 +32,8 @@ class ButtonsFormWidgets extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: RingyStyles.decor8primaryColor,
-          width: 200,
-          height: 50,
+          width: width,
+          height: height,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -36,8 +42,8 @@ class ButtonsFormWidgets extends StatelessWidget {
                   iconData,
                   color: RingyColors.lightWhite,
                 ),
-                const SizedBox(
-                  width: 10,
+                 SizedBox(
+                  width: gapBetween,
                 ),
                 Text(
                   textString,

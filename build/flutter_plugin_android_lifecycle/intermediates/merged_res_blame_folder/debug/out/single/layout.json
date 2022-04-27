@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nasir Subhan\\OneDrive\\Desktop\\Flutter\\flutter_chat\\build\\flutter_plugin_android_lifecycle\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\Nasir Subhan\\.gradle\\caches\\transforms-2\\files-2.1\\965012c323a4b884a0ccc1ee8a6ae0de\\core-1.6.0\\res\\layout\\notification_action.xml"
+    }
+]

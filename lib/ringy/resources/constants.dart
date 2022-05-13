@@ -26,6 +26,13 @@ class Constants {
   static const int invitePage = 2;
   static const int searchPage = 3;
 
+
+
   // static const int messageTypeAudio = 1;
   // static const int messageTypeLocation = 1;
+
+//firebase server Key
+  static const String serverKey = "AAAAppB7FUY:APA91bEUAh0qO5HmqrbqlJVn7_ksopHbReSZlblHqd1wGIm5ESCRuEErtQhzb-riKjQWqlCMwDDj-HaGmowHRy72IYgkDV36ih2CugCYv_Uaml7dhxinJr2jtM1k1jRBxvFpBlq9No4u";
+
+
 }

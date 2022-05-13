@@ -267,10 +267,10 @@ class ChatScreenPage extends StatelessWidget {
 
       if (dataTravel.isGroup == 0) {
         BlocProvider.of<ChatListBloc>(context).repository.sendMessage(
-            HelperModels.sendMessageModel(tmpDataTravel, message, messageType));
+            HelperModels.sendMessageModel(tmpDataTravel, message, messageType),tmpDataTravel);
       } else {
         BlocProvider.of<ChatListBloc>(context).repository.sendGroupMessage(
-            tmpDataTravel.recieverId, myID, message, messageType);
+            tmpDataTravel.recieverId, myID, message, messageType,tmpDataTravel);
       }
       if (mList.isNotEmpty) {
         scrollController.jumpTo(scrollController.position.minScrollExtent);

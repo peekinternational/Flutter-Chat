@@ -16,6 +16,7 @@ import 'package:flutter_chat/ringy/domain/i_facade.dart';
 import 'package:flutter_chat/ringy/infrastructure/API/api_content.dart';
 import 'package:flutter_chat/ringy/infrastructure/API/dio_client.dart';
 import 'package:flutter_chat/ringy/presentation/core/socket/users_socket_utils.dart';
+import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_models.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/socket_helper.dart';
@@ -64,7 +65,7 @@ class ApiDataSource implements IFacade {
 
   @override
   Future<Either<String, SendMessageDataModel>> sendMessage(
-      SendMessageDataModel model) async {
+      SendMessageDataModel model, TmpDataTravel tmpDataTravel) async {
     try {
       String uri = APIContent.chatSendURL;
       String json = jsonEncode(model.toJson());
@@ -75,22 +76,10 @@ class ApiDataSource implements IFacade {
         _socketProvider.mSocketEmit(SocketHelper.singleSendMessage,
             HelperModels.getSimpleMessageObjectForSocket(response.data));
 
-        try {
-          String? token = await HelperClass.getFcmToken();
-          String serverKey = "AAAAppB7FUY:APA91bEUAh0qO5HmqrbqlJVn7_ksopHbReSZlblHqd1wGIm5ESCRuEErtQhzb-riKjQWqlCMwDDj-HaGmowHRy72IYgkDV36ih2CugCYv_Uaml7dhxinJr2jtM1k1jRBxvFpBlq9No4u";
-
-          await htp.post(
-            Uri.parse('https://fcm.googleapis.com/fcm/send'),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-              'Authorization': 'key=$serverKey',
-            },
-            body: HelperClass.constructFCMPayload([token!,token], Prefs.getString(Prefs.myName) ?? "new message", model.msgData!.message ?? "body"),
-          );
-          print('FCM request for device sent!');
-        } catch (e) {
-          print(e);
-        }
+        sendNotification(
+            tmpDataTravel.fcmId,
+            Prefs.getString(Prefs.myName) ?? "new message",
+            model.msgData!.message ?? "body");
       }
 
       return right(model);
@@ -100,13 +89,32 @@ class ApiDataSource implements IFacade {
     }
   }
 
+  sendNotification(List<String?>? fcmIdList, String title, String body) async {
+    try {
+      // String? token = await HelperClass.getFcmToken();
+      // ListString? token = await tmpDataTravel.fcmId;
+      String serverKey = Constants.serverKey;
+      await htp.post(
+        Uri.parse('https://fcm.googleapis.com/fcm/send'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'key=$serverKey',
+        },
+        body: HelperClass.constructFCMPayload(fcmIdList, title, body),
+      );
+      print('FCM request for device sent!');
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Future<Either<String, String>> sendGroupMessage(
-    String groupId,
-    String senderId,
-    String message,
-    int messageType,
-  ) async {
+      String groupId,
+      String senderId,
+      String message,
+      int messageType,
+      TmpDataTravel tmpDataTravel) async {
     try {
       String uri = APIContent.groupChatSendURL;
       Response response;
@@ -121,10 +129,17 @@ class ApiDataSource implements IFacade {
       });
       if (response.statusCode == 200) {
         _socketProvider.getSocket();
-        print(
-            "222222222222222222222222222222 ggggggggrrrrrrrppp: ${response.data}");
         _socketProvider.mSocketEmit(SocketHelper.emitGroupMessage,
             HelperModels.getSimpleMessageObjectForSocket(response.data));
+
+        String? myFcmId = await HelperClass.getFcmToken();
+        List<String?>? fcmIdsList = tmpDataTravel.fcmId;
+        fcmIdsList?.removeWhere((element) => element == myFcmId);
+
+        sendNotification(
+            tmpDataTravel.fcmId,
+            tmpDataTravel.name,
+            "${Prefs.getString(Prefs.myName)} : $message");
       }
 
       return right(response.statusCode.toString());

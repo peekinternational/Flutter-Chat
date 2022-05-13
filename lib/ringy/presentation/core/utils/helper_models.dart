@@ -294,6 +294,7 @@ class HelperModels {
     var tmpDataTravel = TmpDataTravel();
     tmpDataTravel.recieverId = list.sId!;
     tmpDataTravel.image = list.userImage!;
+    tmpDataTravel.fcmId?.add(list.fcmId!);
 
     return tmpDataTravel;
   }

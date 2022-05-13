@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat/ringy/application/bloc/users_list_for_group_bloc/users_list_for_group_bloc.dart';
@@ -33,7 +31,8 @@ class AddGroupUsersPage extends StatelessWidget {
             backgroundColor: RingyColors.primaryColor,
             onPressed: () {
               if (mListSelected.isNotEmpty) {
-                context.pushRoute(AddGroupSubjectRoute(mListSelected: mListSelected));
+                context.pushRoute(
+                    AddGroupSubjectRoute(mListSelected: mListSelected));
               } else {
                 VxToast.show(context,
                     msg: StringsEn.noUserSelectedForGroupValidation);
@@ -48,8 +47,8 @@ class AddGroupUsersPage extends StatelessWidget {
             builder: (context, state) {
               if (state is LoadedState) {
                 mListSelected = state.selectedUsers;
-                return _buildBody(context, state.users, mListSelected, userListBloc,
-                    scrollController);
+                return _buildBody(context, state.users, mListSelected,
+                    userListBloc, scrollController);
               } else if (state is NoUsersState) {
                 return const NoItemWidget(
                     StringsEn.noFriendsFound, Icons.group);
@@ -80,8 +79,7 @@ class AddGroupUsersPage extends StatelessWidget {
           Text(
             StringsEn.newGroup,
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: RingyColors.primaryColor),
+                fontWeight: FontWeight.bold, color: RingyColors.primaryColor),
           ),
           Text(
             StringsEn.addParticipant,
@@ -104,14 +102,15 @@ class AddGroupUsersPage extends StatelessWidget {
     return Column(
       children: [
         if (listSelected.isNotEmpty)
-          _buildSelectedList(context,listSelected,scrollController),
+          _buildSelectedList(context, listSelected, scrollController),
         if (listSelected.isNotEmpty) const Divider(),
-        _buildUsersList(context,list,scrollController,userListBloc,listSelected),
+        _buildUsersList(
+            context, list, scrollController, userListBloc, listSelected),
       ],
     );
   }
 
-  _buildSelectedList(BuildContext context,listSelected,scrollController) {
+  _buildSelectedList(BuildContext context, listSelected, scrollController) {
     return SizedBox(
       height: 100,
       child: ListView.builder(
@@ -124,35 +123,40 @@ class AddGroupUsersPage extends StatelessWidget {
               tween: Tween<double>(begin: 0, end: 1),
               builder: (context, double value, child) => Transform.scale(
                 scale: value,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(children: [
-                      ImageOrFirstCharacterUsers(
-                        radius: 25,
-                        maxRadius: 26,
-                        imageUrl: listSelected[index].userImage!,
-                        name: listSelected[index].name!,
-                        onlineStatus: listSelected[index].onlineStatus!,
-                        showOnlineStatus: false,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(children: [
+                    ImageOrFirstCharacterUsers(
+                      radius: 25,
+                      maxRadius: 26,
+                      imageUrl: listSelected[index].userImage!,
+                      name: listSelected[index].name!,
+                      onlineStatus: listSelected[index].onlineStatus!,
+                      showOnlineStatus: false,
+                    ),
+                    SizedBox(
+                      width: 60,
+                      child: Center(
+                        child: Text(listSelected[index].name!,
+                            overflow: TextOverflow.ellipsis),
                       ),
-                      Text(listSelected[index].name!)
-                    ]),
-                  ),
+                    ),
+                  ]),
+                ),
               ),
-
             );
           }),
     );
   }
 
-  _buildUsersList(BuildContext context, List<UsersList> list, ScrollController scrollController,userListBloc,listSelected) {
-   return Expanded(
+  _buildUsersList(BuildContext context, List<UsersList> list,
+      ScrollController scrollController, userListBloc, listSelected) {
+    return Expanded(
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: list.length,
         scrollDirection: Axis.vertical,
-        separatorBuilder: (BuildContext context, int index) =>
-        const Divider(
+        separatorBuilder: (BuildContext context, int index) => const Divider(
           indent: 20,
           endIndent: 20,
         ),
@@ -160,20 +164,19 @@ class AddGroupUsersPage extends StatelessWidget {
           return InkWell(
               splashColor: Colors.transparent,
               onTap: () => {
-                userListBloc..add(SelectUserForGroupEvent(index)),
-                if (listSelected.isNotEmpty) {
-                  scrollController.animateTo(
-                    scrollController.position.maxScrollExtent + 100,
-                    curve: Curves.easeOut,
-                    duration: const Duration(milliseconds: 300),
-                  )
-                }
-              },
+                    userListBloc..add(SelectUserForGroupEvent(index)),
+                    if (listSelected.isNotEmpty)
+                      {
+                        scrollController.animateTo(
+                          scrollController.position.maxScrollExtent + 100,
+                          curve: Curves.easeOut,
+                          duration: const Duration(milliseconds: 300),
+                        )
+                      }
+                  },
               child: UserItemAddGroupTile(model: list[index]));
         },
       ),
     );
   }
-
-
 }

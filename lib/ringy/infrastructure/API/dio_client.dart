@@ -34,6 +34,4 @@ class DioClient
 
       dio.interceptors.add(Logging());
     }
-
-
  }

@@ -97,7 +97,7 @@ class HelperClass {
   }
 
 
-  static String constructFCMPayload(List<String> token, String title,String body) {
+  static String constructFCMPayload(List<String?>? token, String title,String body) {
     var res = jsonEncode({
       // 'token': token,
       'notification': {

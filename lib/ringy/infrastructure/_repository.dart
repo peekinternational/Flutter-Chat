@@ -7,6 +7,7 @@ import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.d
 import 'package:flutter_chat/ringy/domain/entities/users/groupListModel/group_list_model.dart';
 import 'package:flutter_chat/ringy/domain/i_facade.dart';
 
+import '../presentation/core/utils/data_travel_model.dart';
 import 'data_sources/api_data_source.dart';
 
 class Repository implements IFacade {
@@ -22,8 +23,8 @@ class Repository implements IFacade {
 
   @override
   Future<Either<String, SendMessageDataModel>> sendMessage(
-      SendMessageDataModel model) {
-    return apiDataSource.sendMessage(model);
+      SendMessageDataModel model,TmpDataTravel tmpDataTravel) {
+    return apiDataSource.sendMessage(model,tmpDataTravel);
   }
 
   @override
@@ -32,12 +33,14 @@ class Repository implements IFacade {
     String senderId,
     String message,
     int messageType,
+  TmpDataTravel tmpDataTravel
   ) {
     return apiDataSource.sendGroupMessage(
       groupId,
       senderId,
       message,
       messageType,
+      tmpDataTravel
     );
   }
 

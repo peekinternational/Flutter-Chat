@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../presentation/core/utils/data_travel_model.dart';
 import 'entities/chat/chal_file_share.dart';
 import 'entities/chat/chat_message.dart';
 import 'entities/chat/send_message_api.dart';
@@ -18,10 +19,11 @@ abstract class IFacade {
       String projectId, String userId);
 
   Future<Either<String, SendMessageDataModel>> sendMessage(
-      SendMessageDataModel model);
+      SendMessageDataModel model,TmpDataTravel tmpDataTravel);
 
   Future<Either<String, String>> sendGroupMessage(
-      String groupId, String senderId, String message, int messageType);
+      String groupId, String senderId, String message, int messageType,
+  TmpDataTravel tmpDataTravel);
 
   Future<Either<String, ChatFileShareModel>> chatFileShare(
       ChatFileShareModel model);

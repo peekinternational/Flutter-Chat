@@ -12,30 +12,30 @@ class GroupList {
   int? iV;
   String? updatedByMsg;
   int? groupCallStatus;
-  String latestMsg="";
-  int latestMsgType= 0;
-  String latestMsgSenderId="";
-  String latestMsgCreatedAt="";
+  String latestMsg = "";
+  int latestMsgType = 0;
+  String latestMsgSenderId = "";
+  String latestMsgCreatedAt = "";
 
   GroupList(
-      this.sId,
-        this.members,
-        this.status,
-        this.isGroup,
-        this.name,
-        this.image,
-        this.creatorUserId,
-        this.projectId,
-        this.createdAt,
-        this.updatedAt,
-        this.iV,
-        this.updatedByMsg,
-        this.groupCallStatus,
-        this.latestMsg,
-        this.latestMsgType,
-        this.latestMsgSenderId,
-        this.latestMsgCreatedAt,
-      );
+    this.sId,
+    this.members,
+    this.status,
+    this.isGroup,
+    this.name,
+    this.image,
+    this.creatorUserId,
+    this.projectId,
+    this.createdAt,
+    this.updatedAt,
+    this.iV,
+    this.updatedByMsg,
+    this.groupCallStatus,
+    this.latestMsg,
+    this.latestMsgType,
+    this.latestMsgSenderId,
+    this.latestMsgCreatedAt,
+  );
 
   GroupList.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -88,8 +88,15 @@ class Members {
   String? email;
   String? userImage;
   String? userId;
+  String? fcmId;
 
-  Members({this.sId, this.name, this.email, this.userImage, this.userId});
+  Members(
+      {this.sId,
+      this.name,
+      this.email,
+      this.userImage,
+      this.userId,
+      this.fcmId});
 
   Members.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -97,6 +104,7 @@ class Members {
     email = json['email'];
     userImage = json['user_image'];
     userId = json['userId'];
+    fcmId = json['fcm_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -106,6 +114,7 @@ class Members {
     data['email'] = email;
     data['user_image'] = userImage;
     data['userId'] = userId;
+    data['fcm_id'] = fcmId;
     return data;
   }
 }

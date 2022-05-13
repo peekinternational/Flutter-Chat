@@ -13,7 +13,6 @@ class TmpDataTravel {
    String friendReqId="";
    String groupCreatorId="";
    String recieverName="";
-
    String groupMuted="";
    String bio="";
    int isOnline=0;
@@ -24,9 +23,9 @@ class TmpDataTravel {
    int JoinOnNot =-1;
    bool IsComeFromSearchGroup=false;
    int isGroup = 0;
-
-
    String url="";
+
+   List<String?>? fcmId=[];
 
    TmpDataTravel();
 }

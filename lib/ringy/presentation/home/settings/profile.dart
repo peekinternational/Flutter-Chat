@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat/ringy/application/cubit/profile_settings/profile_settings_cubit.dart';
-import 'package:flutter_chat/ringy/infrastructure/API/api_content.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/choose_file_image_with_percentage.dart';
 import 'package:flutter_chat/ringy/presentation/home/authentications/widgets/buttons_form_widget.dart';
@@ -10,9 +9,7 @@ import 'package:flutter_chat/ringy/presentation/home/authentications/widgets/tex
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../injections.dart';
 

@@ -44,21 +44,30 @@ class UserItemTile extends StatelessWidget {
         : userModel?.latestMsgCreatedAt;
     var groupInInt = isGroup ? 1 : 0;
     var usCountForRead = usCount != 0;
+    var fcmId = isGroup
+        ? groupModel?.members?.map((v) => v.fcmId).toList()
+        : [userModel?.fcmId];
+    fcmId?.removeWhere((e) => e == null || e == "");
     return InkWell(
       onTap: () => {
-        nextPage(
-            context, title!, image!, id!, onlineStatus!, userId, groupInInt),
+        print(fcmId?.length),
+        nextPage(context, title!, image!, id!, onlineStatus!, userId,
+            groupInInt, fcmId),
       },
       child: ListTile(
         horizontalTitleGap: 10,
-        title:
-            Text(title!, style:  TextStyle(fontWeight: usCountForRead? FontWeight.w600 : FontWeight.w400)),
+        title: Text(title!,
+            style: TextStyle(
+                fontWeight:
+                    usCountForRead ? FontWeight.w600 : FontWeight.w400)),
         subtitle: Text(
           HelperClass.checkLastMessage(
               message ?? "", latestMsgType ?? 0, latestMsgSenderId ?? ""),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: usCountForRead? RingyColors.primaryColor: Colors.black38),
+          style: TextStyle(
+              color:
+                  usCountForRead ? RingyColors.primaryColor : Colors.black38),
         ),
         leading: ImageOrFirstCharacterUsers(
           radius: 25,
@@ -76,7 +85,7 @@ class UserItemTile extends StatelessWidget {
   }
 
   nextPage(BuildContext context, String title, String image, String id,
-      int onlineStatus, String userId, int isGroup) {
+      int onlineStatus, String userId, int isGroup, List<String?>? fcmId) {
     TmpDataTravel tmpDataTravel = TmpDataTravel();
     tmpDataTravel.name = title;
     tmpDataTravel.image = image;
@@ -85,7 +94,8 @@ class UserItemTile extends StatelessWidget {
     tmpDataTravel.isOnline = onlineStatus;
     tmpDataTravel.mainUserId = userId;
     tmpDataTravel.isGroup = isGroup;
-
+    tmpDataTravel.fcmId = fcmId;
+    print(fcmId.toString());
     context.pushRoute(ChatScreenRoute(dataTravel: tmpDataTravel));
   }
 }

@@ -12,6 +12,8 @@ import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
 
 import '../../../../../../../injections.dart';
+import '../../../addFriends/widgets/friend_requests_item_tile_with_texts.dart';
+import '../../../addFriends/widgets/friend_requests_send_item_tile.dart';
 
 class O2OUsersPage extends StatelessWidget {
   final bool showUsers;
@@ -77,7 +79,8 @@ Widget _buildBody(BuildContext context, List<UsersList> list, bool showUsers) {
     itemBuilder: (BuildContext context, int index) {
       final revereIndex = list.length - 1 - index;
       return showUsers
-          ? UserItemForwardTile(model: list[revereIndex])
+          // ? UserItemForwardTile(model: list[revereIndex])
+          ? FriendRequestsSendItemTile(model: list[revereIndex])
           : UserItemTile(
               userModel: list[revereIndex],
               groupModel: null,

@@ -57,6 +57,8 @@ class StringsEn {
   static const String addParticipant = "Add participants";
   static const String addSubject = "Add Subject";
   static const String save = "Save";
+  static const String decline = "decline";
+  static const String confirm = "confirm";
 
 
   // static const String phone = "Enter Email";

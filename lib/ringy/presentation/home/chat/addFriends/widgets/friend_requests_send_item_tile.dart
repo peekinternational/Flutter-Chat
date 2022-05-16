@@ -4,10 +4,10 @@ import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.d
 import 'package:flutter_chat/ringy/presentation/core/widgets/image_or_first_character_users.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
 
-class UserItemForwardTile extends StatelessWidget {
+class FriendRequestsSendItemTile extends StatelessWidget {
   final UsersList model;
 
-  const UserItemForwardTile({Key? key, required this.model}) : super(key: key);
+  const FriendRequestsSendItemTile({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class UserItemForwardTile extends StatelessWidget {
         imageUrl: model.userImage!,
         name: model.name!,
         onlineStatus: model.onlineStatus!,
-        showOnlineStatus: true,
+        showOnlineStatus: false,
       ),
       trailing: GestureDetector(
         onTap: () => _nextPage(context, model),
@@ -32,9 +32,11 @@ class UserItemForwardTile extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(1)),
             color: RingyColors.lightWhite,
           ),
-          child: const Icon(
-            Icons.send,
+          child:  Icon(
+            model.onlineStatus == 1? Icons.person : Icons.person_add_alt_1,
             size: 18,
+
+            color: model.onlineStatus == 1? RingyColors.unSelectedColor : RingyColors.primaryColor,
           ),
         ),
       ),
@@ -42,21 +44,7 @@ class UserItemForwardTile extends StatelessWidget {
   }
 
   _nextPage(BuildContext context, UsersList model) {
-    context.popRoute(model);
-  }
 
-
-  Widget rejectButton() {
-    return  CircleAvatar(
-      child: const Center(child: Icon(Icons.close,color: Colors.red,)),
-      backgroundColor: RingyColors.lightWhite,
-    );
-  }
-
-  Widget acceptButton() {
-    return  CircleAvatar(
-      child: const Center(child: Icon(Icons.check,color: Colors.green,)),
-      backgroundColor: RingyColors.lightWhite,
-    );
   }
 }
+

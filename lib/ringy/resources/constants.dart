@@ -21,10 +21,9 @@ class Constants {
   static const String projectId = "5d4c07fb030f5d0600bf5c07";
   static const String socketURL = "https://peekvideochat.com:22000";
 
-  static const int connectPage = 0;
-  static const int friendsPage = 1;
-  static const int invitePage = 2;
-  static const int searchPage = 3;
+  static const int searchFriendPage = 0;
+  static const int acceptFriendsPage = 1;
+
 
 
 

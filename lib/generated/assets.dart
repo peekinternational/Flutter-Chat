@@ -16,6 +16,7 @@ class Assets {
   static const String imagesScanQrIcon = 'assets/images/scan_qr_icon.svg';
   static const String imagesSearchIcon = 'assets/images/search_icon.svg';
   static const String imagesSettingsIcon = 'assets/images/settings_icon.svg';
+  static const String imagesUserCheck = 'assets/images/user_check.svg';
   static const String rawCertificate = 'assets/raw/certificate.pem';
   static const String rawServer = 'assets/raw/server.key';
 

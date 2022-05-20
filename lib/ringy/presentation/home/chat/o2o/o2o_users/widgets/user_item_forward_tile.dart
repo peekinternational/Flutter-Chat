@@ -29,11 +29,11 @@ class UserItemForwardTile extends StatelessWidget {
           margin: const EdgeInsets.only(right: 8),
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(1)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             color: RingyColors.lightWhite,
           ),
           child: const Icon(
-            Icons.send,
+            Icons.arrow_forward_rounded,
             size: 18,
           ),
         ),

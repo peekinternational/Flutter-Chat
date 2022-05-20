@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_chat/ringy/domain/entities/add_friends/friend_requests.dart';
+import 'package:flutter_chat/ringy/domain/entities/add_friends/searched_users.dart';
 import 'package:flutter_chat/ringy/domain/entities/authentication/login_response.dart';
 import 'package:flutter_chat/ringy/domain/entities/authentication/register_response.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat/chal_file_share.dart';
@@ -136,9 +138,7 @@ class ApiDataSource implements IFacade {
         List<String?>? fcmIdsList = tmpDataTravel.fcmId;
         fcmIdsList?.removeWhere((element) => element == myFcmId);
 
-        sendNotification(
-            tmpDataTravel.fcmId,
-            tmpDataTravel.name,
+        sendNotification(tmpDataTravel.fcmId, tmpDataTravel.name,
             "${Prefs.getString(Prefs.myName)} : $message");
       }
 
@@ -494,6 +494,75 @@ class ApiDataSource implements IFacade {
       });
     } catch (e) {
       print(e);
+    }
+  }
+
+  @override
+  Future<Either<String, List<Datum>>> searchUser(
+      String userId, String nameText) async {
+    try {
+      String url = APIContent.searchedUsers +
+          "/" +
+          userId +
+          "/" +
+          nameText +
+          "/" +
+          Constants.projectId;
+
+      Response response;
+      response = await dio.get(url);
+
+      print(response.data);
+
+      if (response.statusCode == 200) {
+        Iterable jsonChat = response.data["Name"] ?? '';
+        return right(jsonChat.map((user) => Datum.fromJson(user)).toList());
+      } else {
+        return left(response.data);
+      }
+    } catch (e) {
+      print(e.toString());
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, String>> sendFriendRequest(
+      String userId, String friendId) async {
+    try {
+      Response response = await dio.post(APIContent.sendFriendRequest, data: {
+        APIContent.projectId: Constants.projectId,
+        APIContent.userId: userId,
+        APIContent.friendId: friendId
+      });
+      if (response.statusCode == 200) {
+        return right(friendId);
+      } else {
+        return left("");
+      }
+    } catch (e) {
+      print(e.toString());
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, List<FriendRequests>>> getFriendRequests(
+      String userId) async {
+    try {
+      Response response = await dio.post(APIContent.getFriendRequests, data: {
+        APIContent.userId: '60f27eb7bfb5bb7a1f0cc84b',
+      });
+
+      if (response.statusCode == 200) {
+        Iterable jsonChat = response.data ?? '';
+        return right(jsonChat.map((user) => FriendRequests.fromJson(user)).toList());
+      } else {
+        return left(response.data);
+      }
+    } catch (e) {
+      print(e.toString());
+      return left(e.toString());
     }
   }
 }

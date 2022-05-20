@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_chat/ringy/domain/entities/add_friends/friend_requests.dart';
 
 import '../presentation/core/utils/data_travel_model.dart';
+import 'entities/add_friends/searched_users.dart';
 import 'entities/chat/chal_file_share.dart';
 import 'entities/chat/chat_message.dart';
 import 'entities/chat/send_message_api.dart';
@@ -43,4 +45,12 @@ abstract class IFacade {
 
   Future<Either<String, String>> changeProfile(
       String textName,String textIcon,String textEmail);
+
+  Future<Either<String, List<Datum>>> searchUser(String userId,
+      String textName);
+
+  Future<Either<String, String>> sendFriendRequest(String userId,
+      String friendId);
+
+  Future<Either<String, List<FriendRequests>>> getFriendRequests(String userId);
 }

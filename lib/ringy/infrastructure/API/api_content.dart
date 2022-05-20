@@ -17,6 +17,9 @@ class APIContent {
   static const String getUserRing = "GetUserRing";
   static const String createGroup = "createUserGroup";
   static const String updateUserProfile = "updateUserProfile";
+  static const String searchedUsers = "getUsersTest";
+  static const String sendFriendRequest = "friends/sendFriendRequest";
+  static const String getFriendRequests = "friends/getFriendsRequest";
 
 
   static const String mobile = "phone";
@@ -27,6 +30,8 @@ class APIContent {
   static const String userId = "userId";
   static const String onlineStatus = "onlineStatus";
   static const String fcmToken = "fcm_id";
+  static const String friendId = "friendId";
+  static const String success = "success";
 
 
 }

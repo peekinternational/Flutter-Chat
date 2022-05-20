@@ -13,6 +13,8 @@ import 'package:flutter_chat/ringy/presentation/home/authentications/sign_up.dar
 import 'package:flutter_chat/ringy/presentation/home/authentications/sign_in_options.dart';
 import 'package:flutter_chat/ringy/presentation/splash/splash.dart';
 
+import '../home/chat/addFriends/switch_friends_page.dart';
+
 part 'router.gr.dart';
 
 @MaterialAutoRouter(
@@ -28,6 +30,7 @@ part 'router.gr.dart';
     AutoRoute(page: OpenMediaPage),
     AutoRoute(page: AddGroupUsersPage),
     AutoRoute(page: AddGroupSubjectPage),
+    AutoRoute(page: SwitchFriendPage),
 
   ],
 )

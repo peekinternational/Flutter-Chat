@@ -4,8 +4,10 @@ import 'package:flutter_chat/ringy/application/bloc/user_list/user_list_bloc.dar
 import 'package:flutter_chat/ringy/application/bloc/users_list_for_group_bloc/users_list_for_group_bloc.dart';
 import 'package:flutter_chat/ringy/application/cubit/auth/login/login_cubit.dart';
 import 'package:flutter_chat/ringy/application/cubit/auth/registration/registration_cubit.dart';
+import 'package:flutter_chat/ringy/application/cubit/friend_requests/friend_requests_cubit.dart';
 import 'package:flutter_chat/ringy/application/cubit/group_create/group_create_cubit.dart';
 import 'package:flutter_chat/ringy/application/cubit/profile_settings/profile_settings_cubit.dart';
+import 'package:flutter_chat/ringy/application/cubit/search_users/search_users_cubit.dart';
 import 'package:flutter_chat/ringy/infrastructure/_repository.dart';
 import 'package:flutter_chat/ringy/infrastructure/data_sources/api_data_source.dart';
 import 'package:get_it/get_it.dart';
@@ -56,6 +58,18 @@ Future<void> chatDependencies() async {
 
   serviceLocator.registerFactory(
     () => ProfileSettingsCubit(
+      serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => SearchUsersCubit(
+      serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => FriendRequestsCubit(
       serviceLocator(),
     ),
   );

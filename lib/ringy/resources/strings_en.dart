@@ -55,10 +55,18 @@ class StringsEn {
   static const String noSubjectSelectedForGroupValidation = "Subject must be selected for group";
   static const String newGroup = "New Group";
   static const String addParticipant = "Add participants";
+  static const String addFriends = "Add Friends";
+  static const String friendRequests = "Friend Requests";
   static const String addSubject = "Add Subject";
   static const String save = "Save";
   static const String decline = "decline";
   static const String confirm = "confirm";
+  static const String searchUser = "Search User";
+  static const String noUserFound = "No User Found";
+  static const String noFriendRequest = "No Request Found";
+  static const String alreadyRequested = "Already Requested";
+  static const String alreadyFriends = "Already Friends";
+
 
 
   // static const String phone = "Enter Email";

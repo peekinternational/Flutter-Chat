@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_chat/ringy/domain/entities/add_friends/friend_requests.dart';
+import 'package:flutter_chat/ringy/domain/entities/add_friends/searched_users.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat/chal_file_share.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat/chat_message.dart';
 import 'package:flutter_chat/ringy/domain/entities/chat/send_message_api.dart';
@@ -106,5 +108,24 @@ class Repository implements IFacade {
       String textName,String textIcon,String textEmail
   ) {
     return apiDataSource.changeProfile(textName, textIcon,textEmail);
+  }
+
+  @override
+  Future<Either<String, List<Datum>>> searchUser(
+      String userId,String nameText
+  ) {
+    return apiDataSource.searchUser(userId, nameText);
+  }
+
+  @override
+  Future<Either<String, String>> sendFriendRequest(
+      String userId,String friendId
+  ) {
+    return apiDataSource.sendFriendRequest(userId, friendId);
+  }
+
+  @override
+  Future<Either<String, List<FriendRequests>>> getFriendRequests(String userId) {
+    return apiDataSource.getFriendRequests(userId);
   }
 }

@@ -7,27 +7,30 @@ class TextFormFiledWidget extends StatelessWidget {
   final String label;
   final String hint;
   final bool isOptional;
+  final bool showSuffixIcon;
   final TextEditingController controller;
   final int delay;
   final bool isEnabled;
   final Function(String ss) onTextChanged;
+  final VoidCallback? closeSearch;
 
-  const TextFormFiledWidget(
-      {Key? key,
-      required this.label,
-      required this.hint,
-      this.isOptional = false,
-      required this.controller,
-      required this.onTextChanged,
-      this.delay = 0,
-      this.isEnabled = true,
-      })
-      : super(key: key);
+  const TextFormFiledWidget({
+    Key? key,
+    required this.label,
+    required this.hint,
+    this.isOptional = false,
+    this.showSuffixIcon = false,
+    this.closeSearch,
+    required this.controller,
+    required this.onTextChanged,
+    this.delay = 0,
+    this.isEnabled = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Padding(
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -39,9 +42,27 @@ class TextFormFiledWidget extends StatelessWidget {
             onChanged: onTextChanged,
             obscureText: label == StringsEn.password,
             decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+                border: label == StringsEn.searchUser
+                    ? const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                      )
+                    : const OutlineInputBorder(),
                 labelText: label,
                 suffixText: isOptional ? StringsEn.optional : "",
+                suffixIcon: showSuffixIcon
+                    ? IconButton(
+                        icon: controller.text != ""
+                            ? Icon(
+                                Icons.close,
+                                color: RingyColors.unSelectedColor,
+                              )
+                            : Icon(
+                                Icons.search,
+                                color: RingyColors.primaryColor,
+                              ),
+                        onPressed: closeSearch,
+                      )
+                    : null,
                 suffixStyle: TextStyle(color: RingyColors.primaryColor),
                 hintText: hint),
           ),

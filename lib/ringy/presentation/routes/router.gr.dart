@@ -70,6 +70,12 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData,
           child: AddGroupSubjectPage(args.mListSelected, key: args.key));
+    },
+    SwitchFriendRoute.name: (routeData) {
+      final args = routeData.argsAs<SwitchFriendRouteArgs>(
+          orElse: () => const SwitchFriendRouteArgs());
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: SwitchFriendPage(key: args.key));
     }
   };
 
@@ -84,7 +90,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(ChatScreenRoute.name, path: '/chat-screen-page'),
         RouteConfig(OpenMediaRoute.name, path: '/open-media-page'),
         RouteConfig(AddGroupUsersRoute.name, path: '/add-group-users-page'),
-        RouteConfig(AddGroupSubjectRoute.name, path: '/add-group-subject-page')
+        RouteConfig(AddGroupSubjectRoute.name, path: '/add-group-subject-page'),
+        RouteConfig(SwitchFriendRoute.name, path: '/switch-friend-page')
       ];
 }
 
@@ -277,5 +284,26 @@ class AddGroupSubjectRouteArgs {
   @override
   String toString() {
     return 'AddGroupSubjectRouteArgs{mListSelected: $mListSelected, key: $key}';
+  }
+}
+
+/// generated route for
+/// [SwitchFriendPage]
+class SwitchFriendRoute extends PageRouteInfo<SwitchFriendRouteArgs> {
+  SwitchFriendRoute({Key? key})
+      : super(SwitchFriendRoute.name,
+            path: '/switch-friend-page', args: SwitchFriendRouteArgs(key: key));
+
+  static const String name = 'SwitchFriendRoute';
+}
+
+class SwitchFriendRouteArgs {
+  const SwitchFriendRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SwitchFriendRouteArgs{key: $key}';
   }
 }

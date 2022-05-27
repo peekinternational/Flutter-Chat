@@ -20,6 +20,7 @@ class APIContent {
   static const String searchedUsers = "getUsersTest";
   static const String sendFriendRequest = "friends/sendFriendRequest";
   static const String getFriendRequests = "friends/getFriendsRequest";
+  static const String updateFriendRequest = "friends/updateFriendRequest";
 
 
   static const String mobile = "phone";
@@ -32,6 +33,8 @@ class APIContent {
   static const String fcmToken = "fcm_id";
   static const String friendId = "friendId";
   static const String success = "success";
+  static const String requestId = "_id";
+  static const String status = "status";
 
 
 }

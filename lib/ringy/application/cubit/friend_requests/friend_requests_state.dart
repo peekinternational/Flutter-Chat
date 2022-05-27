@@ -15,9 +15,9 @@ class FriendRequestsSuccessState extends FriendRequestsState {
   FriendRequestsSuccessState({required this.users});
 }
 
-class FriendRequestsAcceptRequest extends FriendRequestsState {
+class FriendRequestsUpdateRequest extends FriendRequestsState {
   final List<FriendRequests> users;
 
-  FriendRequestsAcceptRequest({required this.users});
+  FriendRequestsUpdateRequest({required this.users});
 }
 class NoUsersState extends FriendRequestsState {}

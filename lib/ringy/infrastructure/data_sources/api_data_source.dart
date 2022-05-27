@@ -550,8 +550,9 @@ class ApiDataSource implements IFacade {
   Future<Either<String, List<FriendRequests>>> getFriendRequests(
       String userId) async {
     try {
+      //'60f27eb7bfb5bb7a1f0cc84b'
       Response response = await dio.post(APIContent.getFriendRequests, data: {
-        APIContent.userId: '60f27eb7bfb5bb7a1f0cc84b',
+        APIContent.userId: userId,
       });
 
       if (response.statusCode == 200) {
@@ -565,4 +566,27 @@ class ApiDataSource implements IFacade {
       return left(e.toString());
     }
   }
+
+
+  @override
+  Future<Either<String, String>> updateFriendRequest(
+      String requestId, String userId, String friendId, int status) async {
+    try {
+      Response response = await dio.post(APIContent.updateFriendRequest, data: {
+        APIContent.requestId: requestId,
+        APIContent.userId: userId,
+        APIContent.friendId: friendId,
+        APIContent.status: status,
+      });
+      if (response.statusCode == 200) {
+        return right(friendId);
+      } else {
+        return left("");
+      }
+    } catch (e) {
+      print(e.toString());
+      return left(e.toString());
+    }
+  }
+
 }

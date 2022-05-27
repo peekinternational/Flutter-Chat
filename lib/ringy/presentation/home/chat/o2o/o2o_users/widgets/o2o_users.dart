@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat/ringy/application/bloc/user_list/user_list_bloc.dart';
 import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/no_user_widget.dart';
-import 'package:flutter_chat/ringy/presentation/home/chat/addFriends/search_friends_page.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/user_item_forward_tile.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/user_item_tile.dart';
 import 'package:flutter_chat/ringy/presentation/routes/router.dart';
@@ -12,11 +12,8 @@ import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/constants.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
-import 'package:auto_route/auto_route.dart';
 
 import '../../../../../../../injections.dart';
-import '../../../addFriends/widgets/friend_requests_item_tile_with_texts.dart';
-import '../../../addFriends/widgets/friend_requests_send_item_tile.dart';
 
 class O2OUsersPage extends StatelessWidget {
   final bool showUsers;

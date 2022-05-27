@@ -1,11 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat/ringy/application/cubit/profile_settings/profile_settings_cubit.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/choose_file_image_with_percentage.dart';
+import 'package:flutter_chat/ringy/presentation/home/authentications/sign_in_options.dart';
 import 'package:flutter_chat/ringy/presentation/home/authentications/widgets/buttons_form_widget.dart';
 import 'package:flutter_chat/ringy/presentation/home/authentications/widgets/text_form_filed_widget.dart';
+import 'package:flutter_chat/ringy/presentation/routes/router.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
@@ -117,6 +120,21 @@ class Profile extends StatelessWidget {
                   percentage: HelperClass.getPercentage(),
                 ),
               )),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0, top: 12.0),
+                child: Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                        onPressed: () => {
+                              Prefs.clear(),
+                              context.router
+                                  .replaceAll([const SignInOptionsRoute()])
+                            },
+                        icon: Icon(
+                          Icons.logout,
+                          color: RingyColors.primaryColor,
+                        ))),
+              )
             ],
           );
         },

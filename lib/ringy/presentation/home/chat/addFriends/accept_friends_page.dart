@@ -31,15 +31,12 @@ class AcceptFriendsPage extends StatelessWidget {
 
   Widget _buildScaffold(BuildContext context) {
     return BlocConsumer<FriendRequestsCubit, FriendRequestsState>(
-      listener: (context, state) {
-        // TODO: implement listener
-        print("objectsssssssssssssssssssssssss : $state");
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
           body: state is FriendRequestsSuccessState
               ? _buildBody(context, state, state.users)
-              : state is FriendRequestsAcceptRequest
+              : state is FriendRequestsUpdateRequest
                   ? _buildBody(context, state, state.users)
                   : state is NoUsersState
                       ? const NoItemWidget(
@@ -63,22 +60,23 @@ class AcceptFriendsPage extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         final revereIndex = list.length - 1 - index;
-        return FriendRequestsItemTileWithTexts(model: list[revereIndex]);
+        return FriendRequestsItemTileWithTexts(
+          model: list[revereIndex],
+          acceptRequest: () =>
+              _updateRequest(context, list[revereIndex], revereIndex, 1),
+          isRequestSending: state is FriendRequestsUpdateRequest &&
+              clickedIndex == revereIndex,
+          rejectRequest: () =>
+              _updateRequest(context, list[revereIndex], revereIndex, 3),
+        );
       },
     );
   }
 
-// _friendStatusPressed(BuildContext context, Datum model, int revereIndex) {
-//   model.friendStatus == 2
-//       ? VxToast.show(context, msg: StringsEn.alreadyRequested)
-//       : model.friendStatus == 0
-//           ? _sendFriendRequest(context, model, revereIndex)
-//           : VxToast.show(context, msg: StringsEn.alreadyFriends);
-// }
-//
-// _sendFriendRequest(BuildContext context, Datum model, int revereIndex) {
-//   clickedIndex = revereIndex;
-//   BlocProvider.of<FriendRequestsCubit>(context)
-//       .sendFriendRequest(Prefs.getString(Prefs.myUserId)!, model.id);
-// }
+  _updateRequest(
+      BuildContext context, FriendRequests model, int revereIndex, int status) {
+    clickedIndex = revereIndex;
+    BlocProvider.of<FriendRequestsCubit>(context).updateFriendRequest(
+        model.id, model.userId.id, model.friendId.id, status);
+  }
 }

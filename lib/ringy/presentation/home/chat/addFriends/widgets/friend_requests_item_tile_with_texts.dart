@@ -8,9 +8,17 @@ import 'package:flutter_chat/ringy/resources/strings_en.dart';
 
 class FriendRequestsItemTileWithTexts extends StatelessWidget {
   final FriendRequests model;
+  final bool isRequestSending;
+  final VoidCallback acceptRequest;
+  final VoidCallback rejectRequest;
 
-  const FriendRequestsItemTileWithTexts({Key? key, required this.model})
-      : super(key: key);
+  const FriendRequestsItemTileWithTexts({
+    Key? key,
+    required this.model,
+    required this.isRequestSending,
+    required this.acceptRequest,
+    required this.rejectRequest,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +41,7 @@ class FriendRequestsItemTileWithTexts extends StatelessWidget {
               ),
             ),
             const VerticalDivider(),
-            RightBody(model)
+            RightBody(model, acceptRequest, rejectRequest)
           ],
         ),
       ),
@@ -43,8 +51,12 @@ class FriendRequestsItemTileWithTexts extends StatelessWidget {
 
 class RightBody extends StatelessWidget {
   final FriendRequests model;
+  final VoidCallback acceptRequest;
+  final VoidCallback rejectRequest;
 
-  const RightBody(this.model, {Key? key}) : super(key: key);
+  const RightBody(this.model, this.acceptRequest, this.rejectRequest,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +74,11 @@ class RightBody extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: acceptButton()),
+              Expanded(child: acceptButton(acceptRequest)),
               const SizedBox(
                 width: 10,
               ),
-              Expanded(child: rejectButton()),
+              Expanded(child: rejectButton(rejectRequest)),
             ],
           ),
         )
@@ -75,85 +87,57 @@ class RightBody extends StatelessWidget {
   }
 }
 
-Widget rejectButton() {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            color: RingyColors.lightWhite,
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.red,
-                blurRadius: 2.0,
-                spreadRadius: 0.0,
-                offset: Offset(2.0, 2.0), // shadow direction: bottom right
-              )
-            ]),
-        child: const Center(
-          child: Text(
-            StringsEn.decline,
-            style: TextStyle(
-                fontWeight: FontWeight.w500, color: Colors.red),
-          ),
-        )
-
-      // ElevatedButton(
-      //     onPressed: () {},
-      //     child: const Text(
-      //       StringsEn.confirm,
-      //     ),
-      //     style: ButtonStyle(
-      //       backgroundColor: MaterialStateProperty.all(RingyColors.primaryColor),
-      //     )),
+Widget rejectButton(VoidCallback rejectRequest) {
+  return InkWell(
+    onTap: rejectRequest,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              color: RingyColors.lightWhite,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.red,
+                  blurRadius: 2.0,
+                  spreadRadius: 0.0,
+                  offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                )
+              ]),
+          child: const Center(
+            child: Text(
+              StringsEn.decline,
+              style: TextStyle(fontWeight: FontWeight.w500, color: Colors.red),
+            ),
+          )),
     ),
   );
-
-  //   Padding(
-  //   padding: const EdgeInsets.all(8.0),
-  //   child: ElevatedButton(
-  //       onPressed: () {},
-  //       child: const Text(
-  //         StringsEn.decline,
-  //       ),
-  //       style: ButtonStyle(
-  //         backgroundColor: MaterialStateProperty.all(RingyColors.lightWhite),
-  //         foregroundColor: MaterialStateProperty.all(Colors.black),
-  //       )),
-  // );
 }
 
-Widget acceptButton() {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            color: RingyColors.lightWhite,
-            boxShadow: [
-              BoxShadow(
-                color: RingyColors.primaryColor,
-                blurRadius: 2.0,
-                spreadRadius: 0.0,
-                offset: Offset(2.0, 2.0), // shadow direction: bottom right
-              )
-            ]),
-        child: Center(
-          child: Text(
-            StringsEn.confirm,
-            style: TextStyle(
-                fontWeight: FontWeight.w500, color: RingyColors.primaryColor),
-          ),
-        )
-
-        // ElevatedButton(
-        //     onPressed: () {},
-        //     child: const Text(
-        //       StringsEn.confirm,
-        //     ),
-        //     style: ButtonStyle(
-        //       backgroundColor: MaterialStateProperty.all(RingyColors.primaryColor),
-        //     )),
-        ),
+Widget acceptButton(VoidCallback acceptRequest) {
+  return InkWell(
+    onTap: acceptRequest,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              color: RingyColors.lightWhite,
+              boxShadow: [
+                BoxShadow(
+                  color: RingyColors.primaryColor,
+                  blurRadius: 2.0,
+                  spreadRadius: 0.0,
+                  offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                )
+              ]),
+          child: Center(
+            child: Text(
+              StringsEn.confirm,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500, color: RingyColors.primaryColor),
+            ),
+          )),
+    ),
   );
 }

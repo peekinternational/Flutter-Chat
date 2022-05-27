@@ -43,7 +43,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _socketProvider.getSocket();
@@ -52,6 +51,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       NotificationHelper.showNotification(message);
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -53,4 +53,7 @@ abstract class IFacade {
       String friendId);
 
   Future<Either<String, List<FriendRequests>>> getFriendRequests(String userId);
+
+  Future<Either<String, String>> updateFriendRequest(
+      String requestId, String userId, String friendId, int status);
 }

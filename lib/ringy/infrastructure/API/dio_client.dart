@@ -23,6 +23,7 @@ class DioClient
         baseUrl: AppConfig.mainURL,
         connectTimeout: 20*1000,
         receiveTimeout: 20*1000,
+       // validateStatus: (status) => true,
       );
 
      dio.options.headers[
@@ -31,6 +32,7 @@ class DioClient
       'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
       'Access-Control-Allow-Credentials': true
        } ];
+     // dio.options.validateStatus =  (status) => true;
 
       dio.interceptors.add(Logging());
     }

@@ -128,4 +128,13 @@ class Repository implements IFacade {
   Future<Either<String, List<FriendRequests>>> getFriendRequests(String userId) {
     return apiDataSource.getFriendRequests(userId);
   }
+
+  @override
+  Future<Either<String, String>> updateFriendRequest(
+      String requestId, String userId, String friendId, int status
+      ) {
+    return apiDataSource.updateFriendRequest(requestId, userId,friendId,status);
+  }
+
+
 }

@@ -15,6 +15,7 @@ import 'package:flutter_chat/ringy/resources/strings_en.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../../../../injections.dart';
+import '../../../../core/widgets/center_circular_progress.dart';
 
 class AddGroupUsersPage extends StatelessWidget {
   const AddGroupUsersPage({Key? key}) : super(key: key);
@@ -53,10 +54,7 @@ class AddGroupUsersPage extends StatelessWidget {
                 return const NoItemWidget(
                     StringsEn.noFriendsFound, Icons.group);
               } else {
-                return Center(
-                    child: CircularProgressIndicator(
-                  color: RingyColors.primaryColor,
-                ));
+                return const CenterCircularProgress();
               }
             },
           ),

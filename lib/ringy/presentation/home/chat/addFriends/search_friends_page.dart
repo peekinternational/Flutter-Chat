@@ -10,6 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../../injections.dart';
 import '../../../../domain/entities/add_friends/searched_users.dart';
+import '../../../core/widgets/center_circular_progress.dart';
 
 class SearchFriendsPage extends StatelessWidget {
   SearchFriendsPage({Key? key}) : super(key: key);
@@ -63,8 +64,7 @@ class SearchFriendsPage extends StatelessWidget {
                             ? const NoItemWidget(
                                 StringsEn.noUserFound, Icons.person_search)
                             : state is SearchUsersLoadingState
-                                ? const Center(
-                                    child: CircularProgressIndicator())
+                                ? const CenterCircularProgress()
                                 : const SizedBox(),
               ),
             ],

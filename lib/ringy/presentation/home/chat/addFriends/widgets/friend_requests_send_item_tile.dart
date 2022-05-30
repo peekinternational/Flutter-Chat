@@ -1,20 +1,16 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/generated/assets.dart';
 import 'package:flutter_chat/ringy/domain/entities/add_friends/searched_users.dart';
-import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/image_or_first_character_users.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
-import 'package:flutter_chat/ringy/resources/strings_en.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class FriendRequestsSendItemTile extends StatelessWidget {
   final Datum model;
   final bool isRequestSending;
   final VoidCallback sendFriendRequest;
 
-   FriendRequestsSendItemTile(
+  FriendRequestsSendItemTile(
       {Key? key,
       required this.model,
       required this.sendFriendRequest,

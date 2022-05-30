@@ -10,6 +10,7 @@ mixin RingyColors {
   static Color tickColorReceiver = const Color(0xFFA09D9D);
   static Color unSelectedColor = const Color(0xFF9AA2B6);
   static Color primaryColor = const Color(0xFF50AC52);
+  static Color primaryColorsecondry = const Color(0xFFA5E5A5);
   static Color overlay = const Color(0xD9000000);
   static Color darkBlue = const Color(0xFF2626BC);
 }

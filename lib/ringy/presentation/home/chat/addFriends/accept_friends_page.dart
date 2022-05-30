@@ -8,6 +8,7 @@ import 'package:flutter_chat/ringy/resources/strings_en.dart';
 
 import '../../../../../injections.dart';
 import '../../../../application/cubit/friend_requests/friend_requests_cubit.dart';
+import '../../../core/widgets/center_circular_progress.dart';
 
 class AcceptFriendsPage extends StatelessWidget {
   AcceptFriendsPage({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class AcceptFriendsPage extends StatelessWidget {
                       ? const NoItemWidget(
                           StringsEn.noFriendRequest, Icons.person_search)
                       : state is FriendRequestsLoadingState
-                          ? const Center(child: CircularProgressIndicator())
+                          ? const CenterCircularProgress()
                           : const SizedBox(),
         );
       },

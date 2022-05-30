@@ -627,6 +627,27 @@
             </list>
           </value>
         </entry>
+        <entry key="jitsi_meet">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/git/jitsi_meet_fork-2a19d529776f45bdcad4adcc1f87b123f5b82b26/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="jitsi_meet_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet_platform_interface-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="jitsi_meet_web_plugin">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet_web_plugin-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="js">
           <value>
             <list>
@@ -1265,6 +1286,7 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/flutter/.pub-cache/git/jitsi_meet_fork-2a19d529776f45bdcad4adcc1f87b123f5b82b26/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-31.0.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.8.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.1/lib" />
@@ -1353,6 +1375,8 @@
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.5.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.3/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet_platform_interface-2.0.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet_web_plugin-2.0.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.5.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/json_serializable-6.2.0/lib" />

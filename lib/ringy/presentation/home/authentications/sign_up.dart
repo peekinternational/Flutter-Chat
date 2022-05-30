@@ -11,6 +11,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injections.dart';
+import '../../core/widgets/center_circular_progress.dart';
 
 class RegistrationPage extends StatelessWidget {
   RegistrationPage({Key? key}) : super(key: key);
@@ -97,11 +98,7 @@ class RegistrationPage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is LoadingState) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: RingyColors.primaryColor,
-            ),
-          );
+          return const CenterCircularProgress();
         }
         return ButtonsFormWidgets(
           delay: 700,

@@ -12,6 +12,7 @@ import 'package:flutter_chat/ringy/resources/strings_en.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../injections.dart';
+import '../../core/widgets/center_circular_progress.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -82,11 +83,7 @@ class LoginPage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is LoadingState) {
-          return  Center(
-            child: CircularProgressIndicator(
-              color: RingyColors.primaryColor,
-            ),
-          );
+          return  const CenterCircularProgress();
         }
         return ButtonsFormWidgets(
           iconData: Icons.attach_email_outlined,

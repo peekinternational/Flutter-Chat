@@ -66,6 +66,15 @@ dependencies:
   flutter_local_notifications: ^9.4.0
   firebase_core: ^1.15.0
   http: ^0.13.4
+#  jitsi_meet: ^4.0.0
+  jitsi_meet:
+    git:
+      url: https://github.com/dispersik/jitsi_meet_fork
+      ref: master
+#  jitsi_meet:
+#    git:
+#      url: https://github.com/gunschu/jitsi_meet.git
+#      ref: 95aa24f9d4d1c3fe1fa4ffaaf3c07beb44bba2f8
 
 
   # The following adds the Cupertino Icons font to your application.

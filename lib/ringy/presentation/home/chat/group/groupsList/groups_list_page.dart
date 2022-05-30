@@ -14,6 +14,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:auto_route/auto_route.dart';
 
 import '../../../../../../../injections.dart';
+import '../../../../core/widgets/center_circular_progress.dart';
 
 class GroupsListPage extends StatelessWidget {
   final bool showUsers;
@@ -66,10 +67,7 @@ class GroupsListPage extends StatelessWidget {
                 return const NoItemWidget(
                     StringsEn.noFriendsFound, Icons.group);
               } else {
-                return Center(
-                    child: CircularProgressIndicator(
-                      color: RingyColors.primaryColor,
-                    ));
+                return const CenterCircularProgress();
               }
             },
           ),

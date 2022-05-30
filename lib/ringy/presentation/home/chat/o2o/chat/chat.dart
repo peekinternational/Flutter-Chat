@@ -15,6 +15,7 @@ import 'package:flutter_chat/ringy/infrastructure/API/dio_client.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_models.dart';
+import 'package:flutter_chat/ringy/presentation/core/widgets/center_circular_progress.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/error_retry_widget.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/no_user_widget.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/o2o/chat/message_views_widgets/items.dart';
@@ -77,10 +78,7 @@ class ChatScreenPage extends StatelessWidget {
                     mList = state.chats;
                     return _buildBody(context, mList, chatListBloc);
                   } else if (state is ChatsLoadingState) {
-                    return Center(
-                        child: CircularProgressIndicator(
-                      color: RingyColors.primaryColor,
-                    ));
+                    return const CenterCircularProgress();
                   } else if (state is ChatListErrorState) {
                     return ErrorRetryWidget(
                         StringsEn.errorWhileFetchingChat,
@@ -93,10 +91,7 @@ class ChatScreenPage extends StatelessWidget {
                                     isGroup: dataTravel.isGroup)),
                             });
                   }
-                  return Center(
-                      child: CircularProgressIndicator(
-                    color: RingyColors.primaryColor,
-                  ));
+                  return const CenterCircularProgress();
                 })));
   }
 
@@ -199,8 +194,8 @@ class ChatScreenPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    if (_editingController.text != "") {
-                      sendSimpleChat(context, _editingController.text,
+                    if (_editingController.text.trim() != "") {
+                      sendSimpleChat(context, _editingController.text.trim(),
                           chatListBloc, 0, dataTravel);
                     }
                   },
@@ -259,13 +254,9 @@ class ChatScreenPage extends StatelessWidget {
     if (isEditMessage) {
       BlocProvider.of<ChatListBloc>(context).repository.updateMessage(
           HelperModels.editMessageModel(
-              _editingController.text, selectedMessageId));
+              _editingController.text.trim(), selectedMessageId));
     } else {
-      // chatListBloc.add(UpdateChatsEvent(
-      //     HelperModels.sendMessageToSocketModel(tmpDataTravel, message),
-      //     messages));
-
-      if (dataTravel.isGroup == 0) {
+     if (dataTravel.isGroup == 0) {
         BlocProvider.of<ChatListBloc>(context).repository.sendMessage(
             HelperModels.sendMessageModel(tmpDataTravel, message, messageType),tmpDataTravel);
       } else {

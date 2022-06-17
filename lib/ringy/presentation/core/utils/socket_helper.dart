@@ -22,6 +22,16 @@ class SocketHelper {
 
   static String groupSendMessage = "sendgroupmsg";
   static String groupReceivedId = "groupreceiveid";
+
+  static String emitCallAccepted = "callAccepted";
+  static String onCallAccepted = "_callAccepted";
+
+
+  // socket.on('leaveAndroidUser', function (data) {
+  //   io.emit('_leaveAndroidUser', data);
+  // });
+
+
   static String GROUP_RECEIVED_DEL_MSG = "grpreciverdeletemsg";
   static String GROUP_RECEIVED_MSG = "receivegroupmsg";
   static String ISRINGING = "_isRinging";

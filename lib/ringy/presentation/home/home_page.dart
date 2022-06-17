@@ -1,6 +1,5 @@
-
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/ringy/presentation/home/chat/call/call_page.dart';
 import 'package:flutter_chat/ringy/presentation/home/chat/group/groupsList/groups_list_page.dart';
 import 'package:flutter_chat/ringy/presentation/home/settings/profile.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,9 +8,11 @@ import 'package:flutter_chat/ringy/presentation/home/chat/o2o/o2o_users/widgets/
 import 'package:flutter_chat/ringy/resources/colors.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
 
+import '../core/utils/notification_click_handle.dart';
+import 'call/join_screen.dart';
+
 class HomePage extends StatefulWidget {
   int _currentIndex;
-
 
   HomePage(this._currentIndex, {Key? key}) : super(key: key);
 
@@ -19,8 +20,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
 
+class _HomePageState extends State<HomePage> {
 
   _getDrawerItemWidget(int pos) {
     switch (pos) {
@@ -29,17 +30,18 @@ class _HomePageState extends State<HomePage> {
       case 1:
         return const GroupsListPage(false);
       case 2:
-        // return Meeting();
-        return const Center(
-          child: Text('Calls'),
-        );
+        return const Meeting();
+      // return const Center(
+      //   child: Text('Calls'),
+      // );
       case 3:
-        return  Profile();
+        return Profile();
       default:
-        return ErrorRetryWidget("error!", () => {
-        });
+        return ErrorRetryWidget("error!", () => {});
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +72,8 @@ class _HomePageState extends State<HomePage> {
                 "assets/bottomIcons/calls_icon.svg",
               ),
               label: StringsEn.call),
-    const BottomNavigationBarItem(
-    icon: Icon(Icons.settings), label: StringsEn.settings),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: StringsEn.settings),
           // BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/bottomIcons/ic_briefcase.png")), label: 'JOBS'),
         ],
         selectedItemColor: RingyColors.primaryColor,
@@ -84,4 +86,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }

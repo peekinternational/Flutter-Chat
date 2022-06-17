@@ -19,6 +19,7 @@ import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:flutter_chat/ringy/resources/strings_en.dart';
 import 'package:flutter_chat/ringy/resources/styles.dart';
 
+import '../../../domain/entities/socket_models/socket_call_status.dart';
 import 'data_travel_model.dart';
 import 'helper_class.dart';
 
@@ -61,6 +62,16 @@ class HelperModels {
     var socketDeleteMessage = SocketDeleteMessage();
     socketDeleteMessage.id = id;
     Object object = socketDeleteMessage.toJson();
+    return object;
+  }
+
+  static Object getCallStatusForSocket(String id , String status, bool amISender, bool isGroup) {
+    var socketCallStatus = SocketCallStatus();
+    socketCallStatus.id = id;
+    socketCallStatus.status = status;
+    socketCallStatus.amISender = amISender;
+    socketCallStatus.isGroup = isGroup;
+    Object object = socketCallStatus.toJson();
     return object;
   }
 
@@ -297,5 +308,13 @@ class HelperModels {
     tmpDataTravel.fcmId?.add(list.fcmId!);
 
     return tmpDataTravel;
+  }
+
+  static void changeStatusColor(
+    Color color,
+  ) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: color),
+    );
   }
 }

@@ -65,7 +65,7 @@ class GroupsListPage extends StatelessWidget {
                 return _buildBody(context, mList, showUsers);
               } else if (state is NoGroupsState) {
                 return const NoItemWidget(
-                    StringsEn.noFriendsFound, Icons.group);
+                    StringsEn.noGroupExists, Icons.group);
               } else {
                 return const CenterCircularProgress();
               }

@@ -28,6 +28,19 @@
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
+
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_channel_id"
+                android:value="@string/default_notification_channel_id" />
+<!--            <service-->
+<!--                android:name="com.yourapp.YourPushService"-->
+<!--                android:stopWithTask="false"-->
+<!--                android:enabled="true"-->
+<!--                android:exported="true">-->
+<!--                <intent-filter>-->
+<!--                    <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--                </intent-filter>-->
+<!--            </service>-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

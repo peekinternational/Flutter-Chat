@@ -69,13 +69,16 @@ class UserItemTile extends StatelessWidget {
               color:
                   usCountForRead ? RingyColors.primaryColor : Colors.black38),
         ),
-        leading: ImageOrFirstCharacterUsers(
-          radius: 25,
-          maxRadius: 26,
-          imageUrl: image!,
-          name: title,
-          onlineStatus: onlineStatus!,
-          showOnlineStatus: isGroup ? false : true,
+        leading: Hero(
+          tag: "mTag$title",
+          child: ImageOrFirstCharacterUsers(
+            radius: 25,
+            maxRadius: 26,
+            imageUrl: image!,
+            name: title,
+            onlineStatus: onlineStatus!,
+            showOnlineStatus: isGroup ? false : true,
+          ),
         ),
         trailing: Text(message == ""
             ? ""

@@ -31,6 +31,7 @@ class StringsEn {
   static const String groups = "Groups";
   static const String settings = "Settings";
   static const String noFriendsFound = "No Friends Found";
+  static const String noGroupExists = "No group exists";
   static const String noChatFound = "No Chat";
   static const String typing = "typing...";
   static const String online = "Online";
@@ -66,6 +67,17 @@ class StringsEn {
   static const String noFriendRequest = "No Request Found";
   static const String alreadyRequested = "Already Requested";
   static const String alreadyFriends = "Already Friends";
+
+  static const String calling = "Calling...";
+  static const String ringing = "Ringing...";
+  static const String incomingCall = "Incoming call";
+
+  static const String simpleMessageNotification = "simpleMessageNotification";
+  static const String callNotification = "callNotification";
+
+  static const String simpleMessageNotificationId = "111";
+  static const String callNotificationId = "112";
+
 
 
 

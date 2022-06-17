@@ -22,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="XML Properties File" />
         <option value="Dart File" />
       </list>
     </option>
@@ -52,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/ringy/application/cubit/switch_friend_request_screens" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/ringy/domain/entities/socket_models" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -62,11 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\domain\entities\socket_models" />
+      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\assets\raw" />
+      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\presentation\core\widgets" />
       <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\application\cubit\switch_friend_request_screens" />
       <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\assets\images" />
-      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\presentation\home\chat\addFriends\widgets" />
-      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\android\app" />
-      <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\presentation\core\widgets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nasir Subhan\OneDrive\Desktop\Flutter\flutter_chat\lib\ringy\domain\entities" />

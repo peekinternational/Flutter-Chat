@@ -12,7 +12,11 @@ import 'package:flutter_chat/ringy/presentation/home/authentications/login_page.
 import 'package:flutter_chat/ringy/presentation/home/authentications/sign_up.dart';
 import 'package:flutter_chat/ringy/presentation/home/authentications/sign_in_options.dart';
 import 'package:flutter_chat/ringy/presentation/splash/splash.dart';
+import 'package:flutter_chat/ringy/resources/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../home/call/call_incoming.dart';
+import '../home/call/call_out.dart';
 import '../home/chat/addFriends/switch_friends_page.dart';
 
 part 'router.gr.dart';
@@ -26,11 +30,14 @@ part 'router.gr.dart';
     AutoRoute(page: LoginPage),
     AutoRoute(page: HomePage),
     AutoRoute(page: RegistrationPage),
+    AutoRoute(page: O2OUsersPage),
     AutoRoute(page: ChatScreenPage),
     AutoRoute(page: OpenMediaPage),
     AutoRoute(page: AddGroupUsersPage),
     AutoRoute(page: AddGroupSubjectPage),
     AutoRoute(page: SwitchFriendPage),
+    AutoRoute(page: CallIncomingPage),
+    AutoRoute(page: CallOutPage),
 
   ],
 )

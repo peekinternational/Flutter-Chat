@@ -10,6 +10,8 @@ import 'package:flutter_chat/ringy/application/cubit/profile_settings/profile_se
 import 'package:flutter_chat/ringy/application/cubit/search_users/search_users_cubit.dart';
 import 'package:flutter_chat/ringy/infrastructure/_repository.dart';
 import 'package:flutter_chat/ringy/infrastructure/data_sources/api_data_source.dart';
+import 'package:flutter_chat/ringy/presentation/core/socket/users_socket_utils.dart';
+import 'package:flutter_chat/ringy/presentation/routes/router.dart';
 import 'package:get_it/get_it.dart';
 
 final serviceLocator = GetIt.instance;
@@ -82,4 +84,6 @@ Future<void> chatDependencies() async {
   serviceLocator.registerLazySingleton(
     () => ApiDataSource(),
   );
+  serviceLocator.registerSingleton<AppRouter>(AppRouter());
+  serviceLocator.registerSingleton<SocketProviderUsers>(SocketProviderUsers());
 }

@@ -27,6 +27,8 @@ import 'package:flutter_chat/ringy/resources/shared_preference.dart';
 import 'package:path/path.dart';
 import 'package:http/http.dart' as htp;
 
+import '../../resources/strings_en.dart';
+
 class ApiDataSource implements IFacade {
   Dio dio = DioClient.instance.getDioClient();
   final _socketProvider = SocketProviderUsers();
@@ -81,7 +83,7 @@ class ApiDataSource implements IFacade {
         sendNotification(
             tmpDataTravel.fcmId,
             Prefs.getString(Prefs.myName) ?? "new message",
-            model.msgData!.message ?? "body");
+            model.msgData!.message ?? "body", StringsEn.simpleMessageNotification,tmpDataTravel.isGroup == 1);
       }
 
       return right(model);
@@ -91,7 +93,7 @@ class ApiDataSource implements IFacade {
     }
   }
 
-  sendNotification(List<String?>? fcmIdList, String title, String body) async {
+  sendNotification(List<String?>? fcmIdList, String title, String body,String channel,bool isGroupCall) async {
     try {
       // String? token = await HelperClass.getFcmToken();
       // ListString? token = await tmpDataTravel.fcmId;
@@ -102,7 +104,7 @@ class ApiDataSource implements IFacade {
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'key=$serverKey',
         },
-        body: HelperClass.constructFCMPayload(fcmIdList, title, body),
+        body: HelperClass.constructFCMPayload(fcmIdList, title, body,channel,isGroupCall),
       );
       print('FCM request for device sent!');
     } catch (e) {
@@ -139,7 +141,7 @@ class ApiDataSource implements IFacade {
         fcmIdsList?.removeWhere((element) => element == myFcmId);
 
         sendNotification(tmpDataTravel.fcmId, tmpDataTravel.name,
-            "${Prefs.getString(Prefs.myName)} : $message");
+            "${Prefs.getString(Prefs.myName)} : $message",StringsEn.simpleMessageNotification,true);
       }
 
       return right(response.statusCode.toString());

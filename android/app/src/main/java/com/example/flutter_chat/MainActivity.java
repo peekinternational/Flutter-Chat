@@ -21,7 +21,7 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
 
 public class MainActivity extends FlutterActivity {
-    public static MethodChannel methodChannel;
+    public  MethodChannel methodChannel;
     public final String channelName = "com.ringy.ringychat.ringy_flutter/ssl_trust_manager";
 
 

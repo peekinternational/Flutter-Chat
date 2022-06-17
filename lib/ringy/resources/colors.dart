@@ -12,5 +12,9 @@ mixin RingyColors {
   static Color primaryColor = const Color(0xFF50AC52);
   static Color primaryColorsecondry = const Color(0xFFA5E5A5);
   static Color overlay = const Color(0xD9000000);
+  static Color overlayCall = const Color(0x48000000);
   static Color darkBlue = const Color(0xFF2626BC);
+
+  static Color callRejectButtonColor = const Color(0xffD64467);
+  static Color callAcceptButtonColor = const Color(0xFF63FC68);
 }

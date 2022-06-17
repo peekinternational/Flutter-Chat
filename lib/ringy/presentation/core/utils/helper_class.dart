@@ -97,16 +97,26 @@ class HelperClass {
   }
 
 
-  static String constructFCMPayload(List<String?>? token, String title,String body) {
+  static String constructFCMPayload(List<String?>? token, String title,String body, String channelStatus, bool isGroupCall) {
     var res = jsonEncode({
       // 'token': token,
-      'notification': {
-        "title": title,
-        "body" : body
-      },
+      // 'notification': {
+      //   "title": title,
+      //   "body" : body,
+      //   "android_channel_id" : "android_channel_id"
+      // },
+      "time_to_live": 30,
       "priority": "high",
       'data': {
+        "title": title,
+        "body": body,
+        "isGroupCall": isGroupCall.toString(),
+        "fromName": Prefs.getString(Prefs.myName),
+        "fromId": Prefs.getString(Prefs.myUserId),
+        "fromImage": Prefs.getString(Prefs.myImage),
         "message": " data message",
+        "status": channelStatus,
+        "android_channel_id" : "android_channel_id"
       },
       'registration_ids':token,
       // 'to': token,

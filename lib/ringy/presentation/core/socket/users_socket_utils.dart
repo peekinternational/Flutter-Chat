@@ -15,6 +15,9 @@ abstract class SocketEventsGroups {
 abstract class SocketEventsChat {
   void eventListener(String eventName, Object args);
 }
+abstract class SocketEventsCall {
+  void eventListener(String eventName, Object args);
+}
 
 
 class SocketProviderUsers {
@@ -28,6 +31,7 @@ class SocketProviderUsers {
   SocketEventsUsers? mEventListener;
   SocketEventsGroups? mEventListenerGroups;
   SocketEventsChat? mEventListenerChat;
+  SocketEventsCall? mEventListenerCall;
 
   factory SocketProviderUsers() {
     return _singleton;
@@ -44,6 +48,10 @@ class SocketProviderUsers {
   void setEventListenerChat(SocketEventsChat eventListener) {
     mEventListenerChat = eventListener;
   }
+  void setEventListenerCall(SocketEventsCall eventListener) {
+    mEventListenerCall = eventListener;
+  }
+
 
 
 
@@ -74,9 +82,11 @@ class SocketProviderUsers {
   void mSocketOn(String eventName) {
     mSocketOff(eventName);
     socket.on(eventName, (data) => {
+      print("objectFromUTILS : $eventName"),
       mEventListener?.eventListener(eventName, data),
       mEventListenerChat?.eventListener(eventName, data),
       mEventListenerGroups?.eventListener(eventName, data),
+      mEventListenerCall?.eventListener(eventName, data),
     });
   }
 

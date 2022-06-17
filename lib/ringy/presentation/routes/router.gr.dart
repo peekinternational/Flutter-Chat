@@ -76,6 +76,22 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const SwitchFriendRouteArgs());
       return MaterialPageX<dynamic>(
           routeData: routeData, child: SwitchFriendPage(key: args.key));
+    },
+    CallIncomingRoute.name: (routeData) {
+      final args = routeData.argsAs<CallIncomingRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: CallIncomingPage(
+              args.senderName, args.senderId, args.senderImage,
+              key: args.key));
+    },
+    CallOutRoute.name: (routeData) {
+      final args = routeData.argsAs<CallOutRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: CallOutPage(args.receiverName, args.receiverId,
+              args.receiverImage, args.fcmIdList, args.groupCall,
+              key: args.key));
     }
   };
 
@@ -87,11 +103,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(LoginRoute.name, path: '/login-page'),
         RouteConfig(HomeRoute.name, path: '/home-page'),
         RouteConfig(RegistrationRoute.name, path: '/registration-page'),
+        RouteConfig(O2OUsersRoute.name, path: '/o2-ousers-page'),
         RouteConfig(ChatScreenRoute.name, path: '/chat-screen-page'),
         RouteConfig(OpenMediaRoute.name, path: '/open-media-page'),
         RouteConfig(AddGroupUsersRoute.name, path: '/add-group-users-page'),
         RouteConfig(AddGroupSubjectRoute.name, path: '/add-group-subject-page'),
-        RouteConfig(SwitchFriendRoute.name, path: '/switch-friend-page')
+        RouteConfig(SwitchFriendRoute.name, path: '/switch-friend-page'),
+        RouteConfig(CallIncomingRoute.name, path: '/call-incoming-page'),
+        RouteConfig(CallOutRoute.name, path: '/call-out-page')
       ];
 }
 
@@ -305,5 +324,95 @@ class SwitchFriendRouteArgs {
   @override
   String toString() {
     return 'SwitchFriendRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [CallIncomingPage]
+class CallIncomingRoute extends PageRouteInfo<CallIncomingRouteArgs> {
+  CallIncomingRoute(
+      {required String? senderName,
+      required String? senderId,
+      required String? senderImage,
+      Key? key})
+      : super(CallIncomingRoute.name,
+            path: '/call-incoming-page',
+            args: CallIncomingRouteArgs(
+                senderName: senderName,
+                senderId: senderId,
+                senderImage: senderImage,
+                key: key));
+
+  static const String name = 'CallIncomingRoute';
+}
+
+class CallIncomingRouteArgs {
+  const CallIncomingRouteArgs(
+      {required this.senderName,
+      required this.senderId,
+      required this.senderImage,
+      this.key});
+
+  final String? senderName;
+
+  final String? senderId;
+
+  final String? senderImage;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CallIncomingRouteArgs{senderName: $senderName, senderId: $senderId, senderImage: $senderImage, key: $key}';
+  }
+}
+
+/// generated route for
+/// [CallOutPage]
+class CallOutRoute extends PageRouteInfo<CallOutRouteArgs> {
+  CallOutRoute(
+      {required String? receiverName,
+      required String? receiverId,
+      required String? receiverImage,
+      required List<String?>? fcmIdList,
+      required bool? groupCall,
+      Key? key})
+      : super(CallOutRoute.name,
+            path: '/call-out-page',
+            args: CallOutRouteArgs(
+                receiverName: receiverName,
+                receiverId: receiverId,
+                receiverImage: receiverImage,
+                fcmIdList: fcmIdList,
+                groupCall: groupCall,
+                key: key));
+
+  static const String name = 'CallOutRoute';
+}
+
+class CallOutRouteArgs {
+  const CallOutRouteArgs(
+      {required this.receiverName,
+      required this.receiverId,
+      required this.receiverImage,
+      required this.fcmIdList,
+      required this.groupCall,
+      this.key});
+
+  final String? receiverName;
+
+  final String? receiverId;
+
+  final String? receiverImage;
+
+  final List<String?>? fcmIdList;
+
+  final bool? groupCall;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CallOutRouteArgs{receiverName: $receiverName, receiverId: $receiverId, receiverImage: $receiverImage, fcmIdList: $fcmIdList, groupCall: $groupCall, key: $key}';
   }
 }

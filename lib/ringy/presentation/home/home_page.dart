@@ -29,12 +29,12 @@ class _HomePageState extends State<HomePage> {
         return const O2OUsersPage(false);
       case 1:
         return const GroupsListPage(false);
-      case 2:
-        return const Meeting();
+      // case 2:
+      //   return const Meeting();
       // return const Center(
       //   child: Text('Calls'),
       // );
-      case 3:
+      case 2:
         return Profile();
       default:
         return ErrorRetryWidget("error!", () => {});
@@ -63,15 +63,15 @@ class _HomePageState extends State<HomePage> {
               label: StringsEn.chat),
           const BottomNavigationBarItem(
               icon: Icon(Icons.group), label: StringsEn.groups),
-          BottomNavigationBarItem(
-              activeIcon: SvgPicture.asset(
-                "assets/bottomIcons/calls_icon.svg",
-                color: RingyColors.primaryColor,
-              ),
-              icon: SvgPicture.asset(
-                "assets/bottomIcons/calls_icon.svg",
-              ),
-              label: StringsEn.call),
+          // BottomNavigationBarItem(
+          //     activeIcon: SvgPicture.asset(
+          //       "assets/bottomIcons/calls_icon.svg",
+          //       color: RingyColors.primaryColor,
+          //     ),
+          //     icon: SvgPicture.asset(
+          //       "assets/bottomIcons/calls_icon.svg",
+          //     ),
+          //     label: StringsEn.call),
           const BottomNavigationBarItem(
               icon: Icon(Icons.settings), label: StringsEn.settings),
           // BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/bottomIcons/ic_briefcase.png")), label: 'JOBS'),

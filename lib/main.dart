@@ -39,12 +39,6 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       onDismissActionReceivedMethod:  NotificationController.onDismissActionReceivedMethod,
   );
 
-
-
-  // NotificationClickHandle notificationClickHandle = NotificationClickHandle();
-  // notificationClickHandle.listenToNotification();
-// createNotificationAwesome(message);
-// print('Handling a background message ${message.data ?? "Sss"}');
 }
 
 Future<void> main() async {
@@ -69,7 +63,6 @@ class MyApp extends StatefulWidget with WidgetsBindingObserver {
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   final _socketProvider = SocketProviderUsers();
   ApiDataSource apiDataSource = ApiDataSource();
-  // NotificationClickHandle notificationClickHandle = NotificationClickHandle();
   final router = serviceLocator<AppRouter>();
 
   @override
@@ -78,41 +71,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     _socketProvider.getSocket();
     changeOnlineStatus(1);
-    // FirebaseMessaging.instance.getInitialMessage().then((message) {
-    //   if (message != null) {
-    //     message.data["title"] == "Call"
-    //         ?
-    //         // router.push(SwitchFriendRoute()):
-    //         router.replaceAll([
-    //             CallIncomingRoute(
-    //                 senderName: "senderName",
-    //                 senderId: "senderId",
-    //                 senderImage: "")
-    //           ])
-    //         : router.replaceAll([HomeRoute(currentIndex: 0)]);
-    //   }
-    // });
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      if(message.data["title"] == "cancelAll"){
-        AwesomeNotifications().dismissAllNotifications();
-        return;
-      }
-      NotificationHelper.createNotificationAwesome(message);
-    });
-    // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    //   message.data["title"] == "Call"
-    //       ? router.push(CallIncomingRoute(
-    //           senderName: "senderName", senderId: "senderId", senderImage: ""))
-    //       : router.push(O2OUsersRoute(showUsers: false));
-    // });
-    // notificationClickHandle.listenToNotification();
-
-    AwesomeNotifications().setListeners(
-        onActionReceivedMethod:         NotificationController.onActionReceivedMethod,
-        onNotificationCreatedMethod:    NotificationController.onNotificationCreatedMethod,
-        onNotificationDisplayedMethod:  NotificationController.onNotificationDisplayedMethod,
-        onDismissActionReceivedMethod:  NotificationController.onDismissActionReceivedMethod
-    );
+    setupNotification();
   }
 
   @override
@@ -123,8 +82,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       theme: _baseTheme,
       routerDelegate: AutoRouterDelegate(router),
       routeInformationParser: router.defaultRouteParser(),
-      // routerDelegate: _router.delegate(),
-      // routeInformationParser: _router.defaultRouteParser(),
     );
   }
 
@@ -154,6 +111,23 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           SocketOnlineStatus(Prefs.getString(Prefs.myUserId), value));
       apiDataSource.userOnlineStatus(Prefs.getString(Prefs.myUserId), value);
     }
+  }
+
+  void setupNotification() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      if(message.data["title"] == "cancelAll"){
+        AwesomeNotifications().dismissAllNotifications();
+        return;
+      }
+      NotificationHelper.createNotificationAwesome(message);
+    });
+
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod:         NotificationController.onActionReceivedMethod,
+        onNotificationCreatedMethod:    NotificationController.onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:  NotificationController.onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:  NotificationController.onDismissActionReceivedMethod
+    );
   }
 }
 

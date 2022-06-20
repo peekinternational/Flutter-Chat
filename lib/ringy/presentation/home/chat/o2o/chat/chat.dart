@@ -125,18 +125,18 @@ class ChatScreenPage extends StatelessWidget {
               children: <Widget>[
                 !isEditMessage
                     ? GestureDetector(
-                  onTap: () {
-                    _showBottomMenu(context);
-                  },
-                  child: Transform.rotate(
-                    angle: 45,
-                    child: const Icon(
-                      Icons.attach_file,
-                      color: Colors.black38,
-                      size: 25,
-                    ),
-                  ),
-                )
+                        onTap: () {
+                          _showBottomMenu(context);
+                        },
+                        child: Transform.rotate(
+                          angle: 45,
+                          child: const Icon(
+                            Icons.attach_file,
+                            color: Colors.black38,
+                            size: 25,
+                          ),
+                        ),
+                      )
                     : const SizedBox(),
                 const SizedBox(
                   width: 15,
@@ -146,15 +146,14 @@ class ChatScreenPage extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     decoration: BoxDecoration(
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(80)),
+                            const BorderRadius.all(Radius.circular(80)),
                         color: RingyColors.lightWhite,
                         border: Border.all(color: Colors.black12)),
                     child: Row(
                       children: [
                         InkWell(
                             onTap: () => {},
-                            child: const Icon(
-                                Icons.emoji_emotions_outlined)),
+                            child: const Icon(Icons.emoji_emotions_outlined)),
                         const SizedBox(
                           width: 10,
                         ),
@@ -172,8 +171,7 @@ class ChatScreenPage extends StatelessWidget {
                             ),
                             onChanged: (text) {
                               if (dataTravel.isGroup == 0) {
-                                SocketTyping socketTyping =
-                                SocketTyping();
+                                SocketTyping socketTyping = SocketTyping();
                                 socketTyping.userId = myID;
                                 socketTyping.selectFrienddata =
                                     dataTravel.recieverId;
@@ -203,8 +201,7 @@ class ChatScreenPage extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 8),
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      borderRadius:
-                      const BorderRadius.all(Radius.circular(1)),
+                      borderRadius: const BorderRadius.all(Radius.circular(1)),
                       color: RingyColors.lightWhite,
                     ),
                     child: const Icon(
@@ -256,12 +253,17 @@ class ChatScreenPage extends StatelessWidget {
           HelperModels.editMessageModel(
               _editingController.text.trim(), selectedMessageId));
     } else {
-     if (dataTravel.isGroup == 0) {
+      if (dataTravel.isGroup == 0) {
         BlocProvider.of<ChatListBloc>(context).repository.sendMessage(
-            HelperModels.sendMessageModel(tmpDataTravel, message, messageType),tmpDataTravel);
+            HelperModels.sendMessageModel(tmpDataTravel, message, messageType),
+            tmpDataTravel);
       } else {
         BlocProvider.of<ChatListBloc>(context).repository.sendGroupMessage(
-            tmpDataTravel.recieverId, myID, message, messageType,tmpDataTravel);
+            tmpDataTravel.recieverId,
+            myID,
+            message,
+            messageType,
+            tmpDataTravel);
       }
       if (mList.isNotEmpty) {
         scrollController.jumpTo(scrollController.position.minScrollExtent);

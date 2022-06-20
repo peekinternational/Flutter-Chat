@@ -81,8 +81,8 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<CallIncomingRouteArgs>();
       return MaterialPageX<dynamic>(
           routeData: routeData,
-          child: CallIncomingPage(
-              args.senderName, args.senderId, args.senderImage,
+          child: CallIncomingPage(args.senderName, args.senderId,
+              args.senderImage, args.isGroupCall,
               key: args.key));
     },
     CallOutRoute.name: (routeData) {
@@ -334,6 +334,7 @@ class CallIncomingRoute extends PageRouteInfo<CallIncomingRouteArgs> {
       {required String? senderName,
       required String? senderId,
       required String? senderImage,
+      required bool? isGroupCall,
       Key? key})
       : super(CallIncomingRoute.name,
             path: '/call-incoming-page',
@@ -341,6 +342,7 @@ class CallIncomingRoute extends PageRouteInfo<CallIncomingRouteArgs> {
                 senderName: senderName,
                 senderId: senderId,
                 senderImage: senderImage,
+                isGroupCall: isGroupCall,
                 key: key));
 
   static const String name = 'CallIncomingRoute';
@@ -351,6 +353,7 @@ class CallIncomingRouteArgs {
       {required this.senderName,
       required this.senderId,
       required this.senderImage,
+      required this.isGroupCall,
       this.key});
 
   final String? senderName;
@@ -359,11 +362,13 @@ class CallIncomingRouteArgs {
 
   final String? senderImage;
 
+  final bool? isGroupCall;
+
   final Key? key;
 
   @override
   String toString() {
-    return 'CallIncomingRouteArgs{senderName: $senderName, senderId: $senderId, senderImage: $senderImage, key: $key}';
+    return 'CallIncomingRouteArgs{senderName: $senderName, senderId: $senderId, senderImage: $senderImage, isGroupCall: $isGroupCall, key: $key}';
   }
 }
 

@@ -15,9 +15,9 @@ class NotificationController {
   static Future<void> onNotificationCreatedMethod(
       ReceivedNotification receivedNotification) async {
     // Your code goes here
-    if (receivedNotification.title == "cancelAll") {
-      AwesomeNotifications().dismissAllNotifications();
-    }
+    // if (receivedNotification.title == "cancelAll") {
+    //   AwesomeNotifications().dismissAllNotifications();
+    // }
   }
 
   /// Use this method to detect every time that a new notification is displayed
@@ -44,6 +44,7 @@ class NotificationController {
       serviceLocator<AppRouter>().push(CallIncomingRoute(
           senderName: mData!["fromName"],
           senderId: mData["fromId"],
+          isGroupCall: mData["isGroupCall"] == "true",
           senderImage: mData["fromImage"]));
     } else if (receivedAction.buttonKeyPressed == "reject") {
       _socketProvider.mSocketEmit(
@@ -55,6 +56,7 @@ class NotificationController {
       serviceLocator<AppRouter>().push(CallIncomingRoute(
           senderName: mData!["fromName"],
           senderId: mData["fromId"],
+          isGroupCall: mData["isGroupCall"] == "true",
           senderImage: mData["fromImage"]));
     } else if (receivedAction.id ==
             int.parse(StringsEn.simpleMessageNotificationId) &&

@@ -92,6 +92,7 @@ class UserItemTile extends StatelessWidget {
     tmpDataTravel.mainUserId = userId;
     tmpDataTravel.isGroup = isGroup;
     tmpDataTravel.fcmId = fcmId;
+    print("objectGPPPPPPPPPPPPPPPPPPPP:  ${tmpDataTravel.fcmId}");
     context.pushRoute(ChatScreenRoute(dataTravel: tmpDataTravel));
   }
 }

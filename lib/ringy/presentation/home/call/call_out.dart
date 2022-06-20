@@ -142,7 +142,7 @@ class _CallOutPageState
             setState(() {
               // isVideoMuted = !isVideoMuted!;
               sendCallNotification("cancelAll");
-              joinCall.callAcceptedStatusFromReceiver(id!, "0", false);
+              joinCall.callAcceptedStatusFromReceiver(id!, "0", widget.groupCall!);
               Navigator.of(context).pop();
             });
           },
@@ -204,13 +204,14 @@ class _CallOutPageState
       () {
         if (!callJoined) {
           sendCallNotification("cancelAll");
-          joinCall.callAcceptedStatusFromReceiver(id!, "0", false);
+          joinCall.callAcceptedStatusFromReceiver(id!, "0", widget.groupCall!);
         }
       },
     );
   }
 
   void sendCallNotification(String title) {
+    print("groupCall ${widget.fcmIdList}");
     apiDataSource.sendNotification(
         widget.fcmIdList,
         title,
@@ -225,17 +226,20 @@ class _CallOutPageState
         (terminateCall) => {
               if (terminateCall) {context.router.pop()}
             },
-        false);
+        false,widget.groupCall!);
   }
 
   void getCallData(data, BuildContext context) {
     setState(() {
       Map<String, dynamic> socketData = jsonDecode(jsonEncode(data));
       var wholeJson = SocketCallStatus.fromJson(socketData);
-      if (wholeJson.status == "1" && wholeJson.id == widget.receiverId) {
+      if (wholeJson.status == "1" /*&& wholeJson.id == widget.receiverId*/) {
+       print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB& ${widget.receiverName!}");
         String? text = Prefs.getString(Prefs.myName);
-        joinCall.joinMeeting("", widget.receiverName!, widget.receiverName!,
-            text!, true, isAudioMuted, isVideoMuted);
+        joinCall.joinMeeting("", text!, text,
+            text, true, isAudioMuted, isVideoMuted);
+        // joinCall.joinMeeting("", widget.receiverName!, widget.receiverName!,
+        //     text!, true, isAudioMuted, isVideoMuted);
         callJoined = true;
       } else if (wholeJson.status == "2") {
         callingText = StringsEn.ringing;

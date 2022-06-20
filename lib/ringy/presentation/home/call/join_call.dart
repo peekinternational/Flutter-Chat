@@ -13,10 +13,12 @@ class JoinCall implements SocketEventsCall {
   late void Function(dynamic ss) callTerminatedStatusHandler;
   final _socketProvider = SocketProviderUsers();
   bool amISender = false;
+  bool isGroupCall = false;
 
   initMeeting(Function(dynamic ss) pickingCallback,
-      Function(dynamic ss) terminateCallback, bool amISender) {
+      Function(dynamic ss) terminateCallback, bool amISender, bool isGroupCall) {
     amISender = amISender;
+    isGroupCall = isGroupCall;
     callPickingStatusHandler = pickingCallback;
     callTerminatedStatusHandler = terminateCallback;
     setupSocket();
@@ -128,10 +130,12 @@ class JoinCall implements SocketEventsCall {
 
   void _onConferenceTerminated(message) {
     debugPrint("_onConferenceTerminated broadcasted with message: $message");
-    _socketProvider.mSocketEmit(
-        SocketHelper.emitCallAccepted,
-        HelperModels.getCallStatusForSocket(
-            Prefs.getString(Prefs.myUserId)!, "0", amISender, false));
+    if (!isGroupCall) {
+      _socketProvider.mSocketEmit(
+              SocketHelper.emitCallAccepted,
+              HelperModels.getCallStatusForSocket(
+                  Prefs.getString(Prefs.myUserId)!, "0", amISender, isGroupCall));
+    }
     callTerminatedStatusHandler.call(true);
   }
 

@@ -408,6 +408,8 @@ class ApiDataSource implements IFacade {
       for (var item in mListSelected) {
         members.add(item.sId!);
       }
+      members.add(Prefs.getString(Prefs.myUserId)!);
+
       GroupData groupData = GroupData();
       groupData.name = groupName;
       groupData.projectId = Constants.projectId;

@@ -26,6 +26,10 @@ import './injections.dart' as di;
 import 'injections.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  if(message.data["title"] == "cancelAll"){
+    AwesomeNotifications().dismissAllNotifications();
+    return;
+  }
   await Firebase.initializeApp();
   HttpOverrides.global = MyHttpOverrides();
   await di.init();

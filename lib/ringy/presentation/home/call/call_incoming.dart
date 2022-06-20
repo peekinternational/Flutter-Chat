@@ -19,8 +19,9 @@ class CallIncomingPage extends StatefulWidget {
   String? senderName;
   String? senderId;
   String? senderImage;
+  bool? isGroupCall;
 
-  CallIncomingPage(this.senderName, this.senderId, this.senderImage, {Key? key})
+  CallIncomingPage(this.senderName, this.senderId, this.senderImage,this.isGroupCall, {Key? key})
       : super(key: key);
 
   @override
@@ -37,22 +38,25 @@ class _CallIncomingPageState extends State<CallIncomingPage> {
   @override
   void initState() {
     super.initState();
+    print("groupCall ${widget.isGroupCall}");
     joinCall.initMeeting(
       (pickCallDate) => {
         endCall(pickCallDate, context)
       },
       (terminateCall) => {
         if (terminateCall) {context.router.pop()}
-      },true
+      },true,widget.isGroupCall!,
     );
   }
 
   endCall(data, BuildContext context) {
     setState(() {
+      print("groupCall $data");
       Map<String, dynamic> socketData = jsonDecode(jsonEncode(data));
       var wholeJson = SocketCallStatus.fromJson(socketData);
       if (wholeJson.status == "0" /*&& wholeJson.id == widget.senderId*/) {
         context.router.pop();
+        joinCall.closeCall();
       }
     });
   }
@@ -170,10 +174,10 @@ class _CallIncomingPageState extends State<CallIncomingPage> {
     setState(() {
       String? text = Prefs.getString(Prefs.myName);
       String? id = Prefs.getString(Prefs.myUserId);
-      joinCall.callAcceptedStatusFromReceiver(id!,status,false);
+      joinCall.callAcceptedStatusFromReceiver(id!,status,widget.isGroupCall!);
       if (status == "1") {
         joinCall.joinMeeting(
-            "", text!, text, text, true, isAudioMuted, isVideoMuted);
+            "", widget.senderName!, widget.senderName!, text!, true, isAudioMuted, isVideoMuted);
       }
     });
   }

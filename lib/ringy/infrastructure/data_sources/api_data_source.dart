@@ -97,6 +97,8 @@ class ApiDataSource implements IFacade {
     try {
       // String? token = await HelperClass.getFcmToken();
       // ListString? token = await tmpDataTravel.fcmId;
+      String? myFcmId = await HelperClass.getFcmToken();
+      fcmIdList?.removeWhere((element) => element == myFcmId);
       String serverKey = Constants.serverKey;
       await htp.post(
         Uri.parse('https://fcm.googleapis.com/fcm/send'),

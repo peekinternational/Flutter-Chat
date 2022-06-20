@@ -4,12 +4,8 @@ import 'package:flutter_chat/ringy/domain/entities/users/chatusers/users_model.d
 import 'package:flutter_chat/ringy/domain/entities/users/groupListModel/group_list_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/data_travel_model.dart';
 import 'package:flutter_chat/ringy/presentation/core/utils/helper_class.dart';
-import 'package:flutter_chat/ringy/presentation/core/widgets/encryption_utils.dart';
-import 'package:flutter_chat/ringy/presentation/core/widgets/image_or_first_character.dart';
 import 'package:flutter_chat/ringy/presentation/core/widgets/image_or_first_character_users.dart';
 import 'package:flutter_chat/ringy/resources/colors.dart';
-import 'package:flutter_chat/ringy/resources/constants.dart';
-import 'package:flutter_chat/ringy/resources/strings_en.dart';
 
 import '../../../../../routes/router.dart';
 
@@ -28,7 +24,6 @@ class UserItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var usCount = isGroup ? 0 : userModel?.usCount;
-
     var id = isGroup ? groupModel?.sId! : userModel?.sId!;
     var userId = isGroup ? "" : userModel?.userId ?? "";
     var title = isGroup ? groupModel?.name! : userModel?.name!;
@@ -50,7 +45,6 @@ class UserItemTile extends StatelessWidget {
     fcmId?.removeWhere((e) => e == null || e == "");
     return InkWell(
       onTap: () => {
-        print(fcmId?.length),
         nextPage(context, title!, image!, id!, onlineStatus!, userId,
             groupInInt, fcmId),
       },
@@ -98,7 +92,6 @@ class UserItemTile extends StatelessWidget {
     tmpDataTravel.mainUserId = userId;
     tmpDataTravel.isGroup = isGroup;
     tmpDataTravel.fcmId = fcmId;
-    print(fcmId.toString());
     context.pushRoute(ChatScreenRoute(dataTravel: tmpDataTravel));
   }
 }

@@ -45,8 +45,8 @@ class ImageOrFirstCharacterCall extends StatelessWidget {
                     child: Image.network(
                       APIContent.imageURl + imageUrl,
                       fit: BoxFit.cover,
-                      width: 100,
-                      height: 100,
+                      width: double.infinity,
+                      height: double.infinity,
                     ),
                   ),
             radius: radius +0,

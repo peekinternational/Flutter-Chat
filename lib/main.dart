@@ -118,6 +118,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       if(message.data["title"] == "cancelAll"){
         AwesomeNotifications().dismissAllNotifications();
         return;
+      }else if(message.data["title"] == "cancelAll"){
+
       }
       NotificationHelper.createNotificationAwesome(message);
     });
